@@ -3,10 +3,13 @@ GPT2 Telegram chatbot that's been relatively tuned.
 
 Please see the python file.
 
-Install gpt-2 as normal,
-Place this file in src/
-Install python-telegram-bot through python pip
-Input your bot key in the python file.
+1. Install gpt-2 as normal,
+
+2. Place this file in src/
+
+3. Install python-telegram-bot through python-pip
+
+4. Input your bot key in the python file.
 
 For quick reference:
 

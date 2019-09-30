@@ -145,14 +145,23 @@ def interact_model(bot, update):
                 meow = str(tigger)
                 if: "Me:" in meow:
                     meow = meow.rsplit('Me:', 1)[0]
+                else:
+                    if "?" in meow:
+                        meow = meow.rsplit('?', 1)[0]
+                        meow = meow + "?"
+                    else:
+                        meow = meow.rsplit('.', 1)[0]
+                        meow = meow + "."
                 if: "You:" in meow:
                     meow = meow.rsplit('You:', 1)[0]
-                if "?" in meow:
-                    meow = meow.rsplit('?', 1)[0]
-                    meow = meow + "?"
                 else:
-                    meow = meow.rsplit('.', 1)[0]
-                    meow = meow + "."
+                    if "?" in meow:
+                        meow = meow.rsplit('?', 1)[0]
+                        meow = meow + "?"
+                    else:
+                        meow = meow.rsplit('.', 1)[0]
+                        meow = meow + "."
+
                 global learn
                 if learn == True:
                     learning = raw_text + meow + " "

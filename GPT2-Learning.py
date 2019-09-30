@@ -86,7 +86,7 @@ def interact_model(bot, update):
             cat = cat / 17
             cat = round(cat) * 17
         length = cat
-        wolf = "Me:" + penguin
+        wolf = "Me: " + penguin
         initial = wolf + " You:"
         raw_text = learning + initial
     if mode == False:

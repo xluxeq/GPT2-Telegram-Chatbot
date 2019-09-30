@@ -143,7 +143,7 @@ def interact_model(bot, update):
                 stripes = text.encode(encoding=sys.stdout.encoding,errors='ignore')
                 tigger = stripes.decode("utf-8")
                 meow = str(tigger)
-                if: "Me:" in meow:
+                if "Me:" in meow:
                     meow = meow.rsplit('Me:', 1)[0]
                 else:
                     if "?" in meow:
@@ -152,7 +152,7 @@ def interact_model(bot, update):
                     else:
                         meow = meow.rsplit('.', 1)[0]
                         meow = meow + "."
-                if: "You:" in meow:
+                if "You:" in meow:
                     meow = meow.rsplit('You:', 1)[0]
                 else:
                     if "?" in meow:

@@ -25,9 +25,15 @@ translator = str.maketrans('', '', string.punctuation)
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M')
     global mode
+    global learn
     mode = False
+    if mode == True and learn == True:
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M. I am in the learning chatbot mode.')
+    if mode == True and learn == False:
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M I am in the chatbot mode.')
+    if mode == False:
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M I am in the finishsentence mode.')
 def help(bot, update):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Me: You: mode. /finish just finishes the text /learnon for conversation learning mode.')
@@ -77,7 +83,9 @@ def interact_model(bot, update):
     tex = update.message.text
     penguin = str(tex)
     global learning
+    global learn
     # This does some basic length processing. This way it can try and answer open-ended questions in chatbot mode.
+    global mode
     if mode == True:
         cat = len(penguin.split(" "))
         if cat < 17:
@@ -105,7 +113,12 @@ def interact_model(bot, update):
     lent = str(length)
     print("Length:" + lent)
     print("INPUTS")
-    update.message.reply_text("Running the generation, be patient please.")
+    if mode == True and learn == True:
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M. I am in the learning chatbot mode. Computing...')
+    if mode == True and learn == False:
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M I am in the chatbot mode. Computing...')
+    if mode == False:
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M I am in the finishsentence mode. Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))
     if batch_size is None:
         batch_size = 1
@@ -161,8 +174,6 @@ def interact_model(bot, update):
                     else:
                         meow = meow.rsplit('.', 1)[0]
                         meow = meow + "."
-
-                global learn
                 if learn == True:
                     learning = raw_text + meow + " "
                 print("OUTPUTS")
@@ -184,7 +195,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("botkey", use_context=False)
+    updater = Updater("XXXXXXXXXXXXBOTKEYXXXXXXXXXXXX", use_context=False)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher

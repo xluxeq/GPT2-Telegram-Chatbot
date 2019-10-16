@@ -29,11 +29,11 @@ def start(bot, update):
     global learn
     mode = False
     if mode == True and learn == True:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M. I am in the learning chatbot mode.')
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
     if mode == True and learn == False:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M I am in the chatbot mode.')
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
     if mode == False:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M I am in the finishsentence mode.')
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
 def help(bot, update):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Me: You: mode. /finish just finishes the text /learnon for conversation learning mode.')
@@ -71,14 +71,35 @@ def learnreset(bot, update):
     learning = ""
     update.message.reply_text('Just type a message... It could be lagged out. Learning mode has been reset.')
 
+def regex(mew):
+    meow = mew
+    if "Me:" in meow:
+        meow = meow.rsplit('Me:', 1)[0]
+        return meow
+    if "You:" in meow:
+        meow = meow.rsplit('You:', 1)[0]
+        return meow
+    if "?" in meow:
+        meow = meow.rsplit('?', 1)[0]
+        meow = meow + "?"
+        return meow
+    if "!" in meow:
+        meow = meow.rsplit('!', 1)[0]
+        meow = meow + "!"
+        return meow
+    else:
+        meow = meow.rsplit('.', 1)[0]
+        meow = meow + "."
+        return meow
+    return meow
 def interact_model(bot, update):
     model_name = '774M'
     seed = None
     nsamples = 1
     batch_size = 1
-    temperature = 0.96
+    temperature = 1
     top_k = 0
-    top_p = 0.96
+    top_p = 0.75
     models_dir = 'models'
     tex = update.message.text
     penguin = str(tex)
@@ -104,21 +125,14 @@ def interact_model(bot, update):
         if cat > 17:
             cat = cat / 17
             cat = round(cat) * 17
-        length = cat
+        length = None
         raw_text = penguin
-    print("INPUTS")
-    print("learning:" + learning)
-    print("meow: Still Null")
-    print("Raw_text:" + raw_text)
-    lent = str(length)
-    print("Length:" + lent)
-    print("INPUTS")
     if mode == True and learn == True:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M. I am in the learning chatbot mode. Computing...')
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode. Computing...')
     if mode == True and learn == False:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M I am in the chatbot mode. Computing...')
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode. Computing...')
     if mode == False:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.960 Rate:0.960 GPT-2 774M I am in the finishsentence mode. Computing...')
+        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode. Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))
     if batch_size is None:
         batch_size = 1
@@ -153,38 +167,34 @@ def interact_model(bot, update):
             for i in range(batch_size):
                 generated += 1
                 text = enc.decode(out[i])
-                stripes = text.encode(encoding=sys.stdout.encoding,errors='ignore')
+                print("==========")
+                print("Before splitlines: " + text)
+                print("==========")
+                pika = text.splitlines()[0]
+                stripes = pika.encode(encoding=sys.stdout.encoding,errors='ignore')
                 tigger = stripes.decode("utf-8")
-                meow = str(tigger)
-                if "Me:" in meow:
-                    meow = meow.rsplit('Me:', 1)[0]
-                else:
-                    if "?" in meow:
-                        meow = meow.rsplit('?', 1)[0]
-                        meow = meow + "?"
-                    else:
-                        meow = meow.rsplit('.', 1)[0]
-                        meow = meow + "."
-                if "You:" in meow:
-                    meow = meow.rsplit('You:', 1)[0]
-                else:
-                    if "?" in meow:
-                        meow = meow.rsplit('?', 1)[0]
-                        meow = meow + "?"
-                    else:
-                        meow = meow.rsplit('.', 1)[0]
-                        meow = meow + "."
+                mew = str(tigger)
+                meow = regex(mew)
                 if learn == True:
                     learning = raw_text + meow + " "
-                print("OUTPUTS")
-                print("learning:" + learning)
-                print("meow:" + meow)
-                print("Raw_text:" + raw_text)
+                update.message.reply_text(meow) 
+                print("==========")
+                mod = str(mode)
+                print("Mode: " + mod)
+                lear = str(learn)
+                print("Learn: " + lear)
                 lent = str(length)
-                print("Length:" + lent)
-                print("OUTPUTS")
-                chat = meow + "[end]"
-                update.message.reply_text(chat)
+                print("Length: " + lent)
+                print("==========")
+                ball = str(pika)
+                print("Before regex: " + ball)
+                print("==========")
+                print("Output: " + meow)
+                print("==========")
+                print("Raw_text or Original: " + raw_text)
+                print("==========")
+                print("Learning text or Next: " + learning)
+                print("==========")
     sess.close()
 def error(bot, update):
     """Log Errors caused by Updates."""
@@ -195,7 +205,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("XXXXXXXXXXXXBOTKEYXXXXXXXXXXXX", use_context=False)
+    updater = Updater("CHATBOTKEYFROMBOTTTTTTFATHERRRRRR", use_context=False)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher

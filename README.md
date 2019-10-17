@@ -65,19 +65,26 @@ Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You:
 ## Samples:
 
 ### Sample1:
-Here's a quick sample of it:
 Hi there! My name is Pikachu, how are you today?
+
 I'm doing fine! I'm the most amazing student you'll ever meet!.
+
 That's pretty cool! You're a pokemon trainer?
+
 No, I'm just a student.
 
 
 ### Sample2:
 Hi there! My name is Pikachu, how are you today?
+
 Hello?
+
 Heya! What's up?
+
 I'm in the middle of an internship!
+
 Oh that sounds fun! What's the internship about?
+
 Interning is a great way to learn about a company and make some great connections!
 
 #### This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-import fire, json, os, string, sys
-import model, sample, encoder, logging
+import fire, json, os, string, sys, threading
+import model, sample, encoder, logging, time
 import numpy as np
 import tensorflow as tf
 # This tests the encoding is not going to error.
@@ -16,21 +16,29 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-
 mode = False
 learn = False
 learning = ""
+user = ""
+running = False
+tim = 1800
 translator = str.maketrans('', '', string.punctuation)
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(bot, update):
     """Send a message when the command /start is issued."""
+    global running
     global mode
     global learn
-    mode = False
-    learn = False
-    global learning
-    learning = ""
+    if running == False:
+        mode = False
+        learn = False
+        global learning
+        learning = ""
+    else:
+        global tim
+        left = str(tim)
+        update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
     if mode == True and learn == True:
         update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
     if mode == True and learn == False:
@@ -42,48 +50,78 @@ def help(bot, update):
     update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Me: You: mode. /finish just finishes the text /learnon for conversation learning mode.')
 def chatbot(bot, update):
     """Send a message when the command /chatbot is issued."""
+    global running
     global mode
     global learn
-    learn = False
-    mode = True
-    global learning
-    learning = ""
+    if running == False:
+        mode = True
+        learn = False
+        global learning
+        learning = ""
+    else:
+        global tim
+        left = str(tim)
+        update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
     update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode, it adds Me: and You: to the input text.')
 def finish(bot, update):
     """Send a message when the command /finish is issued."""
+    global running
     global mode
     global learn
-    mode = False
-    learn = False
-    global learning
-    learning = ""
+    if running == False:
+        mode = False
+        learn = False
+        global learning
+        learning = ""
+    else:
+        global tim
+        left = str(tim)
+        update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
     update.message.reply_text('Just type a message... It could be lagged out. This is the Finish Sentence mode, the default strings apply.')
 def learnon(bot, update):
     """Send a message when the command /finish is issued."""
+    global running
     global mode
     global learn
-    mode = True
-    learn = True
-    global learning
-    learning = ""
+    if running == False:
+        mode = True
+        learn = True
+        global learning
+        learning = ""
+    else:
+        global tim
+        left = str(tim)
+        update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
     update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode, it adds Me: and You: to the input text with learning. Use /learnreset to reset the conversation.')
 def learnoff(bot, update):
     """Send a message when the command /finish is issued."""
+    global running
     global mode
     global learn
-    mode = True
-    learn = False
-    global learning
-    learning = ""
+    if running == False:
+        mode = True
+        learn = False
+        global learning
+        learning = ""
+    else:
+        global tim
+        left = str(tim)
+        update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
     update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode. Learning mode has been turned off.')
 def learnreset(bot, update):
     """Send a message when the command /finish is issued."""
+    global running
     global mode
     global learn
-    mode = True
-    learn = True
-    global learning
-    learning = ""
+    if running == False:
+        mode = True
+        learn = True
+        global learning
+        learning = ""
+    else:
+        global tim
+        left = str(tim)
+        update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
     update.message.reply_text('Just type a message... It could be lagged out. Learning mode has been reset.')
 
 def regex(mew):
@@ -107,6 +145,39 @@ def regex(mew):
         meow = meow + "."
         return meow
     return meow
+
+
+def runn(bot, update):
+    comput = threading.Thread(target=wait, args=(bot, update,))
+    comput.start()
+def wait(bot, update):
+    global tim
+    global user
+    global running
+    if user == "":
+        user = update.message.from_user.id
+    if user == update.message.from_user.id:
+        user = update.message.from_user.id
+        tim = 1800
+        running = True
+        compute = threading.Thread(target=interact_model, args=(bot, update,))
+        compute.start()
+        while tim > 1:
+            time.sleep(1)
+            tim = tim - 1
+            # print(tim)
+        global mode
+        global learn
+        mode = False
+        learn = False
+        global learning
+        learning = ""
+        running = False
+        update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
+    else:
+        left = str(tim)
+        update.message.reply_text('Bot is in use, current cooldown is: ' + left + ' seconds.')
+
 def interact_model(bot, update):
     model_name = '774M'
     seed = None
@@ -134,12 +205,12 @@ def interact_model(bot, update):
         initial = wolf + " You:"
         raw_text = learning + initial
     if mode == False:
-        cat = len(penguin.split(" "))
-        if cat < 17:
-            cat = 17
-        if cat > 17:
-            cat = cat / 17
-            cat = round(cat) * 17
+        # cat = len(penguin.split(" "))
+        # if cat < 17:
+            # cat = 17
+        # if cat > 17:
+            # cat = cat / 17
+            # cat = round(cat) * 17
         length = None
         raw_text = penguin
     if mode == True and learn == True:
@@ -220,11 +291,9 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("CHATBOTKEYFROMBOTTTTTTFATHERRRRRR", use_context=False)
-
+    updater = Updater("BOTAPIKEYFROMBOTFATHER", use_context=False)
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
-
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
@@ -234,14 +303,11 @@ def main():
     dp.add_handler(CommandHandler("learnoff", learnoff))
     dp.add_handler(CommandHandler("learnreset", learnreset))
     # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, interact_model))
-
+    dp.add_handler(MessageHandler(Filters.text, runn))
     # log all errors
     dp.add_error_handler(error)
-
     # Start the Bot
     updater.start_polling()
-
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
     # start_polling() is non-blocking and will stop the bot gracefully.

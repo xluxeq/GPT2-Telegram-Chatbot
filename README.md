@@ -5,13 +5,13 @@ GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probab
 
 ### Installation/How to use:
 
-1. Install gpt-2 as normal,
+1. Install gpt-2 as normal.
 
-2. Place this file in src/
+2. Place this file in tsrc/
 
 3. Install python-telegram-bot through python-pip
 
-4. Input your telegram botfather bot key in the python file.
+4. Input your telegram botfather bot key in the python file/
 
 5. run: ```python3 src/GPT2-Learning.py```
 

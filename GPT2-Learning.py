@@ -205,13 +205,13 @@ def interact_model(bot, update):
         initial = wolf + " You:"
         raw_text = learning + initial
     if mode == False:
-        # cat = len(penguin.split(" "))
-        # if cat < 17:
-            # cat = 17
-        # if cat > 17:
-            # cat = cat / 17
-            # cat = round(cat) * 17
-        length = None
+        cat = len(penguin.split(" "))
+        if cat < 17:
+            cat = 17
+        if cat > 17:
+            cat = cat / 17
+            cat = round(cat) * 17
+        length = cat
         raw_text = penguin
     if mode == True and learn == True:
         update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode. Computing...')

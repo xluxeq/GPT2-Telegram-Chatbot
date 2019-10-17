@@ -1,7 +1,9 @@
-# GPT2-Telegram-Chatbot
-GPT2 Telegram chatbot that's been relatively tuned.
+![Rosetta Stone Chatbot](header.png "Rosetta Stone Chatbot")
+## GPT2-Telegram-Chatbot
 
-Please see the python file.
+GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probably pass a turing test easily and I'd love for to get it turing test certified eventually. Feel free to make me PRs and I'll check out your code!
+
+### Installation/How to use:
 
 1. Install gpt-2 as normal,
 
@@ -9,9 +11,13 @@ Please see the python file.
 
 3. Install python-telegram-bot through python-pip
 
-4. Input your bot key in the python file.
+4. Input your telegram botfather bot key in the python file.
 
-For quick reference:
+5. run: ```python3 src/GPT2-Learning.py```
+
+If needed create a shell script that loops the bot python3 command in case of crashes. The bot requires atleast 8GB of free memory, (16GB preferred and a dual-core processor.) 
+
+### For quick command reference:
 
 ```
 start - Basic start command.
@@ -23,7 +29,7 @@ learnoff - Turn off the sentnce compilation.
 learnreset - Reset the learned conversation.
 ```
 
-Example of learning mode backend:
+### Example of learning mode backend:
 ```
 INFO:tensorflow:Restoring parameters from models/774M/model.ckpt
 2019-10-16 20:05:55,273 - tensorflow - INFO - Restoring parameters from models/774M/model.ckpt
@@ -62,29 +68,22 @@ Raw_text or Original: Me: Hi there! My name is Pikachu, how are you today? You: 
 Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You: Hello?  Me: Heya! What's up? You: I'm in the middle of an internship! Me: Oh that sounds fun! What's the internship about? You: Interning is a great way to learn about a company and make some great connections!
 ==========
 ```
-## Samples:
-
-### Sample1:
-Hi there! My name is Pikachu, how are you today?
-
-I'm doing fine! I'm the most amazing student you'll ever meet!.
-
-That's pretty cool! You're a pokemon trainer?
-
-No, I'm just a student.
+### Samples:
+#### Sample1:
+Message  | Response
+------------- | -------------
+Hi there! My name is Pikachu, how are you today?  | I'm doing fine! I'm the most amazing student you'll ever meet!
+That's pretty cool! You're a pokemon trainer?  | No, I'm just a student.
 
 
-### Sample2:
-Hi there! My name is Pikachu, how are you today?
+#### Sample2:
 
-Hello?
+Message  | Response
+------------- | -------------
+Hi there! My name is Pikachu, how are you today? | Hello?
+Heya! What's up? | I'm in the middle of an internship!
+Oh that sounds fun! What's the internship about? | Interning is a great way to learn about a company and make some great connections!
 
-Heya! What's up?
+**This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.**
 
-I'm in the middle of an internship!
-
-Oh that sounds fun! What's the internship about?
-
-Interning is a great way to learn about a company and make some great connections!
-
-#### This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.
+***Inspired by the book When HARLIE Was One by David Gerrold***

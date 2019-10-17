@@ -28,6 +28,7 @@ def start(bot, update):
     global mode
     global learn
     mode = False
+    learn = False
     if mode == True and learn == True:
         update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
     if mode == True and learn == False:
@@ -40,32 +41,40 @@ def help(bot, update):
 def chatbot(bot, update):
     """Send a message when the command /chatbot is issued."""
     global mode
+    global learn
+    learn = False
     mode = True
     update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode, it adds Me: and You: to the input text.')
 def finish(bot, update):
     """Send a message when the command /finish is issued."""
     global mode
+    global learn
     mode = False
+    learn = False
     update.message.reply_text('Just type a message... It could be lagged out. This is the Finish Sentence mode, the default strings apply.')
 def learnon(bot, update):
     """Send a message when the command /finish is issued."""
     global mode
-    mode = True
     global learn
+    mode = True
     learn = True
     global learning
     learning = ""
     update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode, it adds Me: and You: to the input text with learning. Use /learnreset to reset the conversation.')
 def learnoff(bot, update):
     """Send a message when the command /finish is issued."""
+    global mode
     global learn
+    mode = True
     learn = False
     global learning
     learning = ""
     update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode. Learning mode has been turned off.')
 def learnreset(bot, update):
     """Send a message when the command /finish is issued."""
+    global mode
     global learn
+    mode = True
     learn = True
     global learning
     learning = ""

@@ -127,10 +127,10 @@ def learnreset(bot, update):
 def regex(mew):
     meow = mew
     if "Me:" in meow:
-        meow = meow.rsplit('Me:', 1)[0]
+        meow = meow.rsplit('Me:')[0]
         return meow
     if "You:" in meow:
-        meow = meow.rsplit('You:', 1)[0]
+        meow = meow.rsplit('You:')[0]
         return meow
     if "?" in meow:
         meow = meow.rsplit('?', 1)[0]

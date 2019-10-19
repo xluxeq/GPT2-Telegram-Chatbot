@@ -174,6 +174,7 @@ def wait(bot, update):
         learning = ""
         if running == True:
             running = False
+            user = ""
             update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
         
     else:

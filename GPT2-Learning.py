@@ -128,10 +128,10 @@ def learnreset(bot, update):
 def regex(mew):
     meow = mew
     if "Me:" in meow:
-        meow = meow.split("Me:", 1)[:1]
+        meow = meow[0:meow.find('Me:')]
         return meow
     if "You:" in meow:
-        meow = meow.split("You:", 1)[:1]
+        meow = meow[0:meow.find('You:')]
         return meow
     if "?" in meow:
         meow = meow.rsplit('?', 1)[0]
@@ -160,18 +160,16 @@ def wait(bot, update):
     if user == update.message.from_user.id:
         user = update.message.from_user.id
         lock_tim.acquire()
-        tim = 1800
-        lock_tim.release()
+        try:
+            tim = 1800
+        finally:
+            lock_tim.release()
         running = True
         compute = threading.Thread(target=interact_model, args=(bot, update,))
         compute.start()
         while tim > 1:
             time.sleep(1)
-            lock_tim.acquire()
-            try:
-                tim = tim - 1
-            finally:
-                lock_tim.release()
+            tim = tim - 1
             # print(tim)
         global mode
         global learn
@@ -185,11 +183,7 @@ def wait(bot, update):
             update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
         
     else:
-        lock_tim.acquire()
-        try:
-            left = str(tim)
-        finally:
-            lock_tim.release()
+        left = str(tim)
         update.message.reply_text('Bot is in use, current cooldown is: ' + left + ' seconds.')
 
 def interact_model(bot, update):

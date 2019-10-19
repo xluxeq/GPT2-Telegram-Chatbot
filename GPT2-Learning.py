@@ -22,6 +22,7 @@ learning = ""
 user = ""
 running = False
 tim = 1800
+lock_tim = threading.Lock()
 translator = str.maketrans('', '', string.punctuation)
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
@@ -158,14 +159,18 @@ def wait(bot, update):
         user = update.message.from_user.id
     if user == update.message.from_user.id:
         user = update.message.from_user.id
+        lock_tim.acquire()
         tim = 1800
+        lock_tim.release()
         running = True
         compute = threading.Thread(target=interact_model, args=(bot, update,))
         compute.start()
         while tim > 1:
             time.sleep(1)
+            lock_tim.acquire()
             tim = tim - 1
-            # print(tim)
+            lock_tim.release()
+            # print(tim) THIS IS FOR DEBUG
         global mode
         global learn
         mode = False
@@ -178,7 +183,9 @@ def wait(bot, update):
             update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
         
     else:
+        lock_tim.acquire()
         left = str(tim)
+        lock_tim.release()
         update.message.reply_text('Bot is in use, current cooldown is: ' + left + ' seconds.')
 
 def interact_model(bot, update):
@@ -294,7 +301,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("BOTAPIKEYFROMBOTFATHER", use_context=False)
+    updater = Updater("BOTFATHERBOTKEYTOKEN", use_context=False)
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
     # on different commands - answer in Telegram

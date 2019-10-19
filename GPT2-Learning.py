@@ -168,9 +168,11 @@ def wait(bot, update):
         while tim > 1:
             time.sleep(1)
             lock_tim.acquire()
-            tim = tim - 1
-            lock_tim.release()
-            # print(tim) THIS IS FOR DEBUG
+            try:
+                tim = tim - 1
+            finally:
+                lock_tim.release()
+            # print(tim)
         global mode
         global learn
         mode = False
@@ -184,8 +186,10 @@ def wait(bot, update):
         
     else:
         lock_tim.acquire()
-        left = str(tim)
-        lock_tim.release()
+        try:
+            left = str(tim)
+        finally:
+            lock_tim.release()
         update.message.reply_text('Bot is in use, current cooldown is: ' + left + ' seconds.')
 
 def interact_model(bot, update):

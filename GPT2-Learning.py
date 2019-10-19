@@ -169,7 +169,11 @@ def wait(bot, update):
         compute.start()
         while tim > 1:
             time.sleep(1)
-            tim = tim - 1
+            lock_tim.acquire()
+            try:
+                tim = tim - 1
+            finally:
+                lock_tim.release()
             # print(tim)
         global mode
         global learn

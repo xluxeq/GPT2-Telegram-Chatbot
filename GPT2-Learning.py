@@ -172,8 +172,10 @@ def wait(bot, update):
         learn = False
         global learning
         learning = ""
-        running = False
-        update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
+        if running == True:
+            running = False
+            update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
+        
     else:
         left = str(tim)
         update.message.reply_text('Bot is in use, current cooldown is: ' + left + ' seconds.')

@@ -197,7 +197,13 @@ def interact_model(bot, update):
     batch_size = 1
     temperature = 1
     top_k = 0
-    top_p = 0.75
+    top_p = 0.62
+    # Rating of settings I've tried.
+    # 0.73, 10
+    # 0.70, 11
+    # 0.65, 10
+    # 0.62, 11
+    # 0.60, 10
     models_dir = 'models'
     tex = update.message.text
     penguin = str(tex)

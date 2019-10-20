@@ -274,7 +274,10 @@ def interact_model(bot, update):
                 print("==========")
                 print("Before splitlines: " + text)
                 print("==========")
-                pika = text.splitlines()[0]
+                if mode == True:
+                    pika = text.splitlines()[0]
+                else:
+                    pika = text
                 stripes = pika.encode(encoding=sys.stdout.encoding,errors='ignore')
                 tigger = stripes.decode("utf-8")
                 mew = str(tigger)

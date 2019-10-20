@@ -103,4 +103,6 @@ Awesome man! Well, I'll leave you to it! Have a good day! | Yes!
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***
 
+Bugs: You can only set your mode once per the timer.
+
 [![HitCount](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot.svg)](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot)

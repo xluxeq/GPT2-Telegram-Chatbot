@@ -195,9 +195,9 @@ def interact_model(bot, update):
     seed = None
     nsamples = 1
     batch_size = 1
-    temperature = 1
+    temperature = 0.97
     top_k = 0
-    top_p = 0.62
+    top_p = 0.65
     # Rating of settings I've tried.
     # 0.73, 10
     # 0.70, 11

@@ -21,7 +21,7 @@ learn = False
 learning = ""
 user = ""
 running = False
-tim = 1800
+tim = 600
 lock_tim = threading.Lock()
 translator = str.maketrans('', '', string.punctuation)
 # Define a few command handlers. These usually take the two arguments bot and
@@ -31,21 +31,34 @@ def start(bot, update):
     global running
     global mode
     global learn
-    if running == False:
+    global user
+    global tim
+    global learning
+    if user == "":
+        user = update.message.from_user.id
         mode = False
         learn = False
-        global learning
         learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
+    if user == update.message.from_user.id:
+        mode = False
+        learn = False
+        learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
     else:
-        global tim
         left = str(tim)
         update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
-    if mode == True and learn == True:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
-    if mode == True and learn == False:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
-    if mode == False:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
+
 def help(bot, update):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Me: You: mode. /finish just finishes the text /learnon for conversation learning mode.')
@@ -54,76 +67,161 @@ def chatbot(bot, update):
     global running
     global mode
     global learn
-    if running == False:
+    global user
+    global tim
+    global learning
+    if user == "":
+        user = update.message.from_user.id
         mode = True
         learn = False
-        global learning
         learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
+    if user == update.message.from_user.id:
+        mode = True
+        learn = False
+        learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
     else:
-        global tim
         left = str(tim)
         update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
-    update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode, it adds Me: and You: to the input text.')
 def finish(bot, update):
     """Send a message when the command /finish is issued."""
     global running
     global mode
     global learn
-    if running == False:
+    global user
+    global tim
+    global learning
+    if user == "":
+        user = update.message.from_user.id
         mode = False
         learn = False
-        global learning
         learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
+    if user == update.message.from_user.id:
+        mode = False
+        learn = False
+        learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
     else:
-        global tim
         left = str(tim)
         update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
-    update.message.reply_text('Just type a message... It could be lagged out. This is the Finish Sentence mode, the default strings apply.')
 def learnon(bot, update):
-    """Send a message when the command /finish is issued."""
+    """Send a message when the command /learnon is issued."""
     global running
     global mode
     global learn
-    if running == False:
+    global user
+    global tim
+    global learning
+    if user == "":
+        user = update.message.from_user.id
         mode = True
         learn = True
-        global learning
         learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
+    if user == update.message.from_user.id:
+        mode = True
+        learn = True
+        learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
     else:
-        global tim
         left = str(tim)
         update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
-    update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode, it adds Me: and You: to the input text with learning. Use /learnreset to reset the conversation.')
 def learnoff(bot, update):
-    """Send a message when the command /finish is issued."""
+    """Send a message when the command /learnoff is issued."""
     global running
     global mode
     global learn
-    if running == False:
+    global user
+    global tim
+    global learning
+    if user == "":
+        user = update.message.from_user.id
         mode = True
         learn = False
-        global learning
         learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
+    if user == update.message.from_user.id:
+        mode = True
+        learn = False
+        learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
     else:
-        global tim
         left = str(tim)
         update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
-    update.message.reply_text('Just type a message... It could be lagged out. This is the Chatbot mode. Learning mode has been turned off.')
 def learnreset(bot, update):
-    """Send a message when the command /finish is issued."""
+    """Send a message when the command /learnreset is issued."""
     global running
     global mode
     global learn
-    if running == False:
+    global user
+    global tim
+    global learning
+    if user == "":
+        user = update.message.from_user.id
         mode = True
         learn = True
-        global learning
         learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
+    if user == update.message.from_user.id:
+        mode = False
+        learn = False
+        learning = ""
+        if mode == True and learn == True:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
+        if mode == True and learn == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode.')
+        if mode == False:
+            update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode.')
     else:
-        global tim
         left = str(tim)
         update.message.reply_text('Bot is currently in use, make sure to set your settings when their timer runs down. ' + left + ' seconds.')
-    update.message.reply_text('Just type a message... It could be lagged out. Learning mode has been reset.')
 
 def regex(mew):
     meow = mew
@@ -155,37 +253,29 @@ def wait(bot, update):
     global tim
     global user
     global running
+    global mode
+    global learn
+    global learning
     if user == "":
         user = update.message.from_user.id
     if user == update.message.from_user.id:
         user = update.message.from_user.id
-        lock_tim.acquire()
-        try:
-            tim = 1800
-        finally:
-            lock_tim.release()
-        running = True
+        tim = 600
         compute = threading.Thread(target=interact_model, args=(bot, update,))
         compute.start()
-        while tim > 1:
-            time.sleep(1)
-            lock_tim.acquire()
-            try:
+        if running == False:
+            while tim > 1:
+                running = True
+                time.sleep(1)
                 tim = tim - 1
-            finally:
-                lock_tim.release()
-            # print(tim)
-        global mode
-        global learn
-        mode = False
-        learn = False
-        global learning
-        learning = ""
-        if running == True:
-            running = False
-            user = ""
-            update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
-        
+                print(tim)
+            if running == True:
+                mode = False
+                learn = False
+                learning = ""
+                user = ""
+                update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
+                running = False
     else:
         left = str(tim)
         update.message.reply_text('Bot is in use, current cooldown is: ' + left + ' seconds.')
@@ -195,9 +285,9 @@ def interact_model(bot, update):
     seed = None
     nsamples = 1
     batch_size = 1
-    temperature = 0.97
+    temperature = 0.99
     top_k = 0
-    top_p = 0.65
+    top_p = 0.69
     # Rating of settings I've tried.
     # 0.73, 10
     # 0.70, 11
@@ -209,7 +299,7 @@ def interact_model(bot, update):
     penguin = str(tex)
     global learning
     global learn
-    # This does some basic length processing. This way it can try and answer open-ended questions in chatbot mode.
+    # This does some basic length processing.
     global mode
     if mode == True:
         cat = len(penguin.split(" "))
@@ -231,12 +321,7 @@ def interact_model(bot, update):
             cat = round(cat) * 17
         length = cat
         raw_text = penguin
-    if mode == True and learn == True:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M. I am in the learning chatbot mode. Computing...')
-    if mode == True and learn == False:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the chatbot mode. Computing...')
-    if mode == False:
-        update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.75 Rate:1 GPT-2 774M I am in the finishsentence mode. Computing...')
+    update.message.reply_text('Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))
     if batch_size is None:
         batch_size = 1
@@ -312,7 +397,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("BOTFATHERBOTKEYTOKEN", use_context=False)
+    updater = Updater("BOTFATHERKEYKEYBOTFATHERKEYKEY", use_context=False)
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
     # on different commands - answer in Telegram

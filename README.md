@@ -10,7 +10,7 @@ https://telegram.me/finishsentencebot
 
 1. Install gpt-2 as normal.
 
-2. Place this file in tsrc/
+2. Place this file in src/
 
 3. Install python-telegram-bot through python-pip
 

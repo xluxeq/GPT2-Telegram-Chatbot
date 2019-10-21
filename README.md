@@ -3,6 +3,9 @@
 
 GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probably pass a turing test easily and I'd love for to get it turing test certified eventually. Feel free to make me PRs and I'll check out your code!
 
+For a demo if it's online:
+https://telegram.me/finishsentencebot
+
 ### Installation/How to use:
 
 1. Install gpt-2 as normal.

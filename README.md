@@ -102,10 +102,9 @@ Oh that sounds fun! Is she cute? | Yeah, she's really pretty.
 Awesome man! Well, I'll leave you to it! Have a good day! | Yes!
 
 
-**This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.**
+---This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.---
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***
 
-Bugs: You can only set your mode once per the timer.
 
 [![HitCount](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot.svg)](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot)

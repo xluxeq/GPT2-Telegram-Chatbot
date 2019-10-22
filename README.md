@@ -102,9 +102,7 @@ Oh that sounds fun! Is she cute? | Yeah, she's really pretty.
 Awesome man! Well, I'll leave you to it! Have a good day! | Yes!
 
 
-~~This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.~~ It was set like this in the above examples but removed/commented out for production. You can uncomment it out, but the grammarly tests were run with length equalling words input- space is the delimeter.
-
-***Inspired by the book When HARLIE Was One by David Gerrold***
+~~This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.~~ It was set like this in the above examples but removed/commented out for production. You can uncomment it out, but the grammarly tests were run with length equalling words input- space is the delimeter. The top results were run against 0.75 Top_p with the sentence structure in place that was removed.
 
 Here's a list of grammarly scores:
 
@@ -135,5 +133,5 @@ Top-P | Score
 0.89 | 87
 0.90 | 79
 
-
+***Inspired by the book When HARLIE Was One by David Gerrold***
 [![HitCount](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot.svg)](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot)

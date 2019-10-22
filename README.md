@@ -9,15 +9,22 @@ https://telegram.me/finishsentencebot
 ### Installation/How to use:
 
 1. Install gpt-2 as normal IE:
+
 ```python3 -m pip install tensorflow```
+
 or
+
 ```python3 -m pip install tensorflow-gpu```
+
 ...
+
 ```python3 -m pip install -r requirements.txt```
 
 2. Place this file in the src/ folder.
 
-3. Install python-telegram-bot with ```python3 -m pip install python-telegram-bot```
+3. Install python-telegram-bot with 
+
+```python3 -m pip install python-telegram-bot```
 
 4. Input your telegram botfather bot key in the python file/
 

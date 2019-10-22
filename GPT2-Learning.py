@@ -21,7 +21,7 @@ learn = False
 learning = ""
 user = ""
 running = False
-tim = 600
+tim = 1200
 lock_tim = threading.Lock()
 translator = str.maketrans('', '', string.punctuation)
 # Define a few command handlers. These usually take the two arguments bot and
@@ -61,7 +61,7 @@ def start(bot, update):
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Me: You: mode. /finish just finishes the text /learnon for conversation learning mode.')
+    update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Message: Response: mode. /finish just finishes the text /learnon for conversation learning mode.')
 def chatbot(bot, update):
     """Send a message when the command /chatbot is issued."""
     global running
@@ -225,11 +225,11 @@ def learnreset(bot, update):
 
 def regex(mew):
     meow = mew
-    if "Me:" in meow:
-        meow = meow[0:meow.find('Me:')]
+    if "Message:" in meow:
+        meow = meow[0:meow.find('Message:')]
         return meow
-    if "You:" in meow:
-        meow = meow[0:meow.find('You:')]
+    if "Response:" in meow:
+        meow = meow[0:meow.find('Response:')]
         return meow
     if "?" in meow:
         meow = meow.rsplit('?', 1)[0]
@@ -243,6 +243,7 @@ def regex(mew):
         meow = meow.rsplit('.', 1)[0]
         meow = meow + "."
         return meow
+    meow = "Error."
     return meow
 
 
@@ -260,7 +261,7 @@ def wait(bot, update):
         user = update.message.from_user.id
     if user == update.message.from_user.id:
         user = update.message.from_user.id
-        tim = 600
+        tim = 1200
         compute = threading.Thread(target=interact_model, args=(bot, update,))
         compute.start()
         if running == False:
@@ -302,23 +303,23 @@ def interact_model(bot, update):
     global mode
     if mode == True:
         cat = len(penguin.split(" "))
-        if cat < 17:
-            cat = 17
-        if cat > 17:
-            cat = cat / 17
-            cat = round(cat) * 17
-        length = cat
-        wolf = "Me: " + penguin
-        initial = wolf + " You:"
+        # if cat < 17:
+            # cat = 17
+        # if cat > 17:
+            # cat = cat / 17
+            # cat = round(cat) * 17
+        length = cat * 2
+        wolf = "Message: " + penguin
+        initial = wolf + " Response:"
         raw_text = learning + initial
     if mode == False:
         cat = len(penguin.split(" "))
-        if cat < 17:
-            cat = 17
-        if cat > 17:
-            cat = cat / 17
-            cat = round(cat) * 17
-        length = cat
+        # if cat < 17:
+            # cat = 17
+        # if cat > 17:
+            # cat = cat / 17
+            # cat = round(cat) * 17
+        length = cat * 2
         raw_text = penguin
     update.message.reply_text('Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))

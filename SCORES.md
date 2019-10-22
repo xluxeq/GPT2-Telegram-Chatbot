@@ -37,6 +37,7 @@ Top-P | Score
 
 
 Here is a list of length scores run through grammarly at 0.73 top_p:
+
 Sentence Length | Score
 ------------- | -------------
 Length 25 | 77
@@ -58,4 +59,5 @@ Length 10 | 99
 Length 9 | 92
 Length 8 | 85
 Length 7 | 83
+
 Length 10 is coincidentally 2* the input text, - Message and Response is 8, which is 7.5 rounded up (or average "hello how are you name" response length. (7.5)

@@ -102,36 +102,9 @@ Oh that sounds fun! Is she cute? | Yeah, she's really pretty.
 Awesome man! Well, I'll leave you to it! Have a good day! | Yes!
 
 
-~~This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.~~ It was set like this in the above examples but removed/commented out for production. You can uncomment it out, but the grammarly tests were run with length equalling words input- space is the delimeter. The top results were run against 0.75 Top_p with the sentence structure in place that was removed.
+~~This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.~~ It was set like this in the above examples but removed/commented out for production. You can uncomment it out, but the grammarly tests were run with length equalling words input- space is the delimeter. The top results were run against 0.75 Top_p with the sentence structure in place that was removed. For a list of grammarly scores please see [[/SCORES.MD|alt=SCORES.MD]].
 
-Here's a list of grammarly scores:
 
-Top-P | Score
-------------- | -------------
-0.67 | 96
-0.68 | 99
-0.69 | 99
-0.70 | 99
-0.71 | 96
-0.72 | 99
-0.73 | 99
-0.74 | 99
-0.75 | 86
-0.76 | 85
-0.77 | 93
-0.78 | 99
-0.79 | 97
-0.80 | 96
-0.81 | 93
-0.82 | 92
-0.83 | 91
-0.84 | 96
-0.85 | 76
-0.86 | 87
-0.87 | 70
-0.88 | 86
-0.89 | 87
-0.90 | 79
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***
 

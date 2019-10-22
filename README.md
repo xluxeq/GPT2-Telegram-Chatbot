@@ -107,7 +107,8 @@ Awesome man! Well, I'll leave you to it! Have a good day! | Yes!
 ***Inspired by the book When HARLIE Was One by David Gerrold***
 
 Here's a list of grammarly scores:
-top_p | Score
+
+Top-P | Score
 ------------- | -------------
 0.67 | 96
 0.68 | 99

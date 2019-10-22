@@ -34,3 +34,27 @@ Top-P | Score
 0.88 | 86
 0.89 | 87
 0.90 | 79
+
+
+Here is a list of length scores run through grammarly at 0.73 top_p:
+Length: 25 - 77
+Length: 24 - 80
+Length: 23 - 72
+Length: 22 - 71
+Length: 21 - 86
+Length: 20 - 88
+Length: 19 - 76
+Length: 18 - 68
+Length: 17 - 61
+Length: 16 - 53
+Length: 15 - 87
+Length: 14 - 83
+Length: 13 - 94
+Length: 12 - 55
+Length: 11 - 79
+Length: 10 - 99
+Length: 9 - 92
+Length: 8 - 85
+Length: 7 - 83
+
+Length 10 is coincidentally 2* the input text, - Message and Response is 8, which is 7.5 rounded up (or average "hello how are you name" response length. (7.5)

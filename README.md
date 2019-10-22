@@ -106,5 +106,33 @@ Awesome man! Well, I'll leave you to it! Have a good day! | Yes!
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***
 
+Here's a list of grammarly scores:
+top_p | Score
+------------- | -------------
+0.67 | 96
+0.68 | 99
+0.69 | 99
+0.70 | 99
+0.71 | 96
+0.72 | 99
+0.73 | 99
+0.74 | 99
+0.75 | 86
+0.76 | 85
+0.77 | 93
+0.78 | 99
+0.79 | 97
+0.80 | 96
+0.81 | 93
+0.82 | 92
+0.83 | 91
+0.84 | 96
+0.85 | 76
+0.86 | 87
+0.87 | 70
+0.88 | 86
+0.89 | 87
+0.90 | 79
+
 
 [![HitCount](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot.svg)](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot)

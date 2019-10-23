@@ -61,7 +61,7 @@ def start(bot, update):
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Message: Response: mode. /finish just finishes the text /learnon for conversation learning mode.')
+    update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Response: Reply: mode. /finish just finishes the text /learnon for conversation learning mode.')
 def chatbot(bot, update):
     """Send a message when the command /chatbot is issued."""
     global running
@@ -225,11 +225,11 @@ def learnreset(bot, update):
 
 def regex(mew):
     meow = mew
-    if "Message:" in meow:
-        meow = meow[0:meow.find('Message:')]
-        return meow
     if "Response:" in meow:
         meow = meow[0:meow.find('Response:')]
+        return meow
+    if "Reply:" in meow:
+        meow = meow[0:meow.find('Reply:')]
         return meow
     if "?" in meow:
         meow = meow.rsplit('?', 1)[0]
@@ -308,9 +308,11 @@ def interact_model(bot, update):
         # if cat > 17:
             # cat = cat / 17
             # cat = round(cat) * 17
-        length = cat * 2
-        wolf = "Message: " + penguin
-        initial = wolf + " Response:"
+        # length = cat * 2
+        # This slicey-dicey +5 seemed good.
+        length = cat + 5
+        wolf = "Response: " + penguin
+        initial = wolf + " Reply:"
         raw_text = learning + initial
     if mode == False:
         cat = len(penguin.split(" "))
@@ -319,7 +321,9 @@ def interact_model(bot, update):
         # if cat > 17:
             # cat = cat / 17
             # cat = round(cat) * 17
-        length = cat * 2
+        # length = cat * 2
+        # This slicey-dicey +5 seemed good.
+        length = cat + 5
         raw_text = penguin
     update.message.reply_text('Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))

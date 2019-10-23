@@ -114,7 +114,7 @@ Oh that sounds fun! Is she cute? | Yeah, she's really pretty.
 Awesome man! Well, I'll leave you to it! Have a good day! | Yes!
 
 
-~~This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.~~ It was set like this in the above examples but removed/commented out for production. You can uncomment it out, but the grammarly tests were run with length equalling words input - space is the delimeter. For a list of grammarly scores please see [/SCORES.MD](/SCORES.md). The current length of processing is set to input words * two not including "Message:" and "Response:" context in the chatbot mode.
+~~This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.~~ It was set like this in the above examples but removed/commented out for production. You can uncomment it out, but the grammarly tests were run with length equalling words input - space is the delimeter. For a list of grammarly scores please see [/SCORES.MD](/SCORES.md). The current length of processing is set to input words ~~* two~~ plus five  not including "Response:" and "Reply:" context in the chatbot mode.
 
 
 

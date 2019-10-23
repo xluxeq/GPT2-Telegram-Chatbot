@@ -37,7 +37,7 @@ Top-P | Score
 
 
 Here is a list of length scores run through grammarly at 0.73 top_p:
-Somewhere along here I started playing with the context words. i.e. in the code: It adds "Response:" before anything computed and "Reply:". Before it was "Me:" and "You:".
+Somewhere along here I started playing with the context words. i.e. in the code: It adds "Response:" and "Reply:" before anything computed and before it was "Me:" + "You:".
 
 Sentence Length | Score
 ------------- | -------------

@@ -61,7 +61,7 @@ def start(bot, update):
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Response: Reply: mode. /finish just finishes the text /learnon for conversation learning mode.')
+    update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into My Message: Your Response: mode. /finish just finishes the text /learnon for conversation learning mode.')
 def chatbot(bot, update):
     """Send a message when the command /chatbot is issued."""
     global running
@@ -225,11 +225,15 @@ def learnreset(bot, update):
 
 def regex(mew):
     meow = mew
-    if "Response:" in meow:
-        meow = meow[0:meow.find('Response:')]
+    if "- " in meow:
+        meow = meow.replace('- ', '')
+    if "-" in meow:
+        meow = meow.replace('-', '')
+    if "My Message:" in meow:
+        meow = meow[0:meow.find('My Message:')]
         return meow
-    if "Reply:" in meow:
-        meow = meow[0:meow.find('Reply:')]
+    if "Your Response:" in meow:
+        meow = meow[0:meow.find('Your Response:')]
         return meow
     if "?" in meow:
         meow = meow.rsplit('?', 1)[0]
@@ -310,9 +314,9 @@ def interact_model(bot, update):
             # cat = round(cat) * 17
         # length = cat * 2
         # This slicey-dicey +5 seemed good.
-        length = cat + 5
-        wolf = "Response: " + penguin
-        initial = wolf + " Reply:"
+        length = cat * 2
+        wolf = "My Message: " + penguin
+        initial = wolf + " Your Response: "
         raw_text = learning + initial
     if mode == False:
         cat = len(penguin.split(" "))
@@ -323,7 +327,7 @@ def interact_model(bot, update):
             # cat = round(cat) * 17
         # length = cat * 2
         # This slicey-dicey +5 seemed good.
-        length = cat + 5
+        length = cat * 2
         raw_text = penguin
     update.message.reply_text('Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))

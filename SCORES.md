@@ -37,6 +37,7 @@ Top-P | Score
 
 
 Here is a list of length scores run through grammarly at 0.73 top_p:
+Somewhere along here I started playing with the context words. i.e. in the code: It adds "Response:" before anything computed and "Reply:". Before it was "Me:" and "You:".
 
 Sentence Length | Score
 ------------- | -------------
@@ -60,4 +61,6 @@ Length 9 | 92
 Length 8 | 85
 Length 7 | 83
 
-Length 10 is coincidentally 2* the input text, - Message and Response is 8, which is 7.5 rounded up (or average "hello how are you" response length. (7.5)
+Length 10 is coincidentally 2 * the input text not including Response and Reply context is 8, which is 7.5 rounded up (or average "hello how are you" response length. (7.5).
+
+In the code, I set this as (words input) plus five, this seemed to work well and will probably be the last update for awhile to this code.

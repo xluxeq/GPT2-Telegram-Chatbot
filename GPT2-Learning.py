@@ -210,8 +210,8 @@ def learnreset(bot, update):
         if mode == False:
             update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.73 Rate:1 GPT-2 774M I am in the finishsentence mode.')
     if user == update.message.from_user.id:
-        mode = False
-        learn = False
+        mode = True
+        learn = True
         learning = ""
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 774M Settings: Logic: 0.73 Rate:1 GPT-2 774M. I am in the learning chatbot mode.')
@@ -225,10 +225,6 @@ def learnreset(bot, update):
 
 def regex(mew):
     meow = mew
-    if "- " in meow:
-        meow = meow.replace('- ', '')
-    if "-" in meow:
-        meow = meow.replace('-', '')
     if "Me:" in meow:
         meow = meow[0:meow.find('Me:')]
         return meow

@@ -61,7 +61,7 @@ def start(bot, update):
 
 def help(bot, update):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into My Message: Your Response: mode. /finish just finishes the text /learnon for conversation learning mode.')
+    update.message.reply_text('Just type a message... It could be lagged out. /chatbot goes into Me: You: mode. /finish just finishes the text /learnon for conversation learning mode.')
 def chatbot(bot, update):
     """Send a message when the command /chatbot is issued."""
     global running
@@ -229,11 +229,11 @@ def regex(mew):
         meow = meow.replace('- ', '')
     if "-" in meow:
         meow = meow.replace('-', '')
-    if "My Message:" in meow:
-        meow = meow[0:meow.find('My Message:')]
+    if "Me:" in meow:
+        meow = meow[0:meow.find('Me:')]
         return meow
-    if "Your Response:" in meow:
-        meow = meow[0:meow.find('Your Response:')]
+    if "You:" in meow:
+        meow = meow[0:meow.find('You:')]
         return meow
     if "?" in meow:
         meow = meow.rsplit('?', 1)[0]
@@ -315,8 +315,8 @@ def interact_model(bot, update):
         # length = cat * 2
         # This slicey-dicey +5 seemed good.
         length = cat * 2
-        wolf = "My Message: " + penguin
-        initial = wolf + "Your Response: "
+        wolf = "Me: " + penguin
+        initial = wolf + "You: "
         raw_text = learning + initial
     if mode == False:
         cat = len(penguin.split(" "))

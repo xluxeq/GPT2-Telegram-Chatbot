@@ -316,7 +316,7 @@ def interact_model(bot, update):
         # This slicey-dicey +5 seemed good.
         length = cat * 2
         wolf = "My Message: " + penguin
-        initial = wolf + " Your Response: "
+        initial = wolf + "Your Response: "
         raw_text = learning + initial
     if mode == False:
         cat = len(penguin.split(" "))

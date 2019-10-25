@@ -328,8 +328,8 @@ def interact_model(bot, update):
         # length = cat * 2
         rng = cat * 1.5
         length = round(rng)
-        wolf = "Me: " + penguin
-        initial = wolf + " You:"
+        wolf = "You: " + penguin
+        initial = wolf + " Me:"
         raw_text = learning + initial
     if mode == False:
         cat = len(penguin.split(" "))

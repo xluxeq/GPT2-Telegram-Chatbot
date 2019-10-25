@@ -287,14 +287,14 @@ def interact_model(bot, update):
     nsamples = 1
     batch_size = 1
     temperature = 1
-    top_k = 0
-    top_p = 0.000001
+    top_k = 1
+    top_p = 0.01
     # Rating of settings I've tried, these were run through grammarly.
     # 0.67 - 99 ! Short responses 19/20 in context
     # 0.69 - 99 ! Repetitive responses 20/20 in context
     # 0.72 - 99 ! Readability 19/20 in context
     # 0.73 - 99 ! Readability 20/20 in context
-    # Also set this to like 0.000001 it does some crazy stuff.
+    # Also set this to like 0.01 it does some crazy stuff. Just the lean mode doesn't work.
     models_dir = 'models'
     tex = update.message.text
     penguin = str(tex)

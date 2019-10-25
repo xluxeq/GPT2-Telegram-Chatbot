@@ -61,4 +61,4 @@ Length 9 | 92
 Length 8 | 85
 Length 7 | 83
 
-This was done using Input words = length. This might be useful for your training.
+I'm unsure of how useful this would be. I think the input text was 5 words.

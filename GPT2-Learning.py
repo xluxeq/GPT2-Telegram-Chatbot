@@ -286,7 +286,7 @@ def interact_model(bot, update):
     seed = None
     nsamples = 1
     batch_size = 1
-    temperature = 0.90
+    temperature = 1
     top_k = 0
     top_p = 0.000001
     # Rating of settings I've tried, these were run through grammarly.
@@ -310,11 +310,10 @@ def interact_model(bot, update):
             # cat = cat / 17
             # cat = round(cat) * 17
         # length = cat * 2
-        # This slicey-dicey +5 seemed good.
         rng = cat * 1.5
         length = round(rng)
         wolf = "Me: " + penguin
-        initial = wolf + " You: "
+        initial = wolf + " You:"
         raw_text = learning + initial
     if mode == False:
         cat = len(penguin.split(" "))
@@ -324,7 +323,6 @@ def interact_model(bot, update):
             # cat = cat / 17
             # cat = round(cat) * 17
         # length = cat * 2
-        # This slicey-dicey +5 seemed good.
         rng = cat * 1.5
         length = round(rng)
         raw_text = penguin

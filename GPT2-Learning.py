@@ -11,13 +11,18 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # You can set the settings here
+# Session timeout
 timstart = 1200
-top_p = 0.01
-temperature = 1
+# Model logic (trained to usually)
+top = 0.73
+# Temperature
+temp = 1
+# Length multiplier for top_p
+mx = 3
 # End settings
 
-temps = str(temperature)
-tpstring = str(top_p)
+temps = str(temp)
+tpstring = str(top)
 mode = False
 learn = False
 learning = ""
@@ -265,10 +270,13 @@ def regex(mew):
     return meow
 
 def runn(bot, update):
-    comput = threading.Thread(target=wait, args=(bot, update,))
+    top_p = top
+    temperature = temp
+    mult = mx
+    comput = threading.Thread(target=wait, args=(bot, update, top_p, temperature, mult,))
     comput.start()
 
-def wait(bot, update):
+def wait(bot, update, top_p, temperature, mult):
     global tim
     global user
     global running
@@ -280,14 +288,13 @@ def wait(bot, update):
     if user == update.message.from_user.id:
         user = update.message.from_user.id
         tim = timstart
-        compute = threading.Thread(target=interact_model, args=(bot, update,))
+        compute = threading.Thread(target=interact_model, args=(bot, update, top_p, temperature, mult,))
         compute.start()
         if running == False:
             while tim > 1:
                 running = True
                 time.sleep(1)
                 tim = tim - 1
-                print(tim)
             if running == True:
                 mode = False
                 learn = False
@@ -299,12 +306,12 @@ def wait(bot, update):
         left = str(tim)
         update.message.reply_text('Bot is in use, current cooldown is: ' + left + ' seconds.')
 
-def interact_model(bot, update):
-    model_name = '774M'
+def interact_model(bot, update, top_p, temperature, mult):
+    model_name = 'trained'
     seed = random.randint(1, 4294967295)
     nsamples = 1
     batch_size = 1
-    top_k = 1
+    top_k = 0
     # Rating of settings I've tried, these were run through grammarly.
     # 0.67 - 99 ! Short responses 19/20 in context
     # 0.69 - 99 ! Repetitive responses 20/20 in context
@@ -318,30 +325,28 @@ def interact_model(bot, update):
     global learn
     # This does some basic length processing.
     global mode
+#############################################
     if mode == True:
         cat = len(penguin.split(" "))
-        # if cat < 17:
-            # cat = 17
-        # if cat > 17:
-            # cat = cat / 17
-            # cat = round(cat) * 17
-        # length = cat * 2
-        rng = cat * 1.5
+        rng = cat * mult
         length = round(rng)
         wolf = "You: " + penguin
         initial = wolf + " Me:"
         raw_text = learning + initial
     if mode == False:
         cat = len(penguin.split(" "))
-        # if cat < 17:
-            # cat = 17
-        # if cat > 17:
-            # cat = cat / 17
-            # cat = round(cat) * 17
-        # length = cat * 2
-        rng = cat * 1.5
+        rng = cat * mult
         length = round(rng)
         raw_text = penguin
+    tx = float(top_p)
+    cax = float(cat)
+    lex = float(length)
+    ta = ((1-tx)/cax)
+    tn = (ta * lex)
+    top_p = ((tx) + (ta))
+    if top_p > 1:
+        top_p = 1
+#############################################
     update.message.reply_text('Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))
     if batch_size is None:
@@ -408,6 +413,12 @@ def interact_model(bot, update):
                 print("==========")
                 print("Learning text or Next: " + learning)
                 print("==========")
+                tps = str(top_p)
+                print("top_p out: " + tps)
+                print("==========")
+                tpa = str(tx)
+                print("top_p in: " + tpa)
+                print("==========")
     sess.close()
 
 def error(bot, update):
@@ -419,7 +430,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("BOTFATHERKEYKEYBOTFATHERKEYKEY", use_context=False)
+    updater = Updater("TELEGRAMBOTKEYFROMBATFATHER", use_context=False)
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
     # on different commands - answer in Telegram

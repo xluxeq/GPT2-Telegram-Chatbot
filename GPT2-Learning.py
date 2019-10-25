@@ -288,12 +288,13 @@ def interact_model(bot, update):
     batch_size = 1
     temperature = 0.90
     top_k = 0
-    top_p = 0.73
+    top_p = 0.000001
     # Rating of settings I've tried, these were run through grammarly.
     # 0.67 - 99 ! Short responses 19/20 in context
     # 0.69 - 99 ! Repetitive responses 20/20 in context
     # 0.72 - 99 ! Readability 19/20 in context
     # 0.73 - 99 ! Readability 20/20 in context
+    # Also set this to like 0.000001 it does some crazy stuff.
     models_dir = 'models'
     tex = update.message.text
     penguin = str(tex)
@@ -310,7 +311,8 @@ def interact_model(bot, update):
             # cat = round(cat) * 17
         # length = cat * 2
         # This slicey-dicey +5 seemed good.
-        length = cat * 2
+        rng = cat * 1.5
+        length = round(rng)
         wolf = "Me: " + penguin
         initial = wolf + " You: "
         raw_text = learning + initial
@@ -323,7 +325,8 @@ def interact_model(bot, update):
             # cat = round(cat) * 17
         # length = cat * 2
         # This slicey-dicey +5 seemed good.
-        length = cat * 2
+        rng = cat * 1.5
+        length = round(rng)
         raw_text = penguin
     update.message.reply_text('Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))

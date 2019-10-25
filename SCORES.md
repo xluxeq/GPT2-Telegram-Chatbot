@@ -61,6 +61,4 @@ Length 9 | 92
 Length 8 | 85
 Length 7 | 83
 
-Length 10 is coincidentally 2 * the input text not including Response and Reply context is 8, which is 7.5 rounded up (or average "hello how are you" response length. (7.5).
-
-The temperature you'd want to play around with, a low 0.9 seemed to work here on my end which is suprising from the 0.98T 0.98Top_p settings I origially had.
+This was done using Input words = length. This might be useful for your training.

@@ -83,38 +83,8 @@ Raw_text or Original: Me: Hi there! My name is Pikachu, how are you today? You: 
 Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You: Hello?  Me: Heya! What's up? You: I'm in the middle of an internship! Me: Oh that sounds fun! What's the internship about? You: Interning is a great way to learn about a company and make some great connections!
 ==========
 ```
-### Samples:
-#### Sample1:
-Message  | Response
-------------- | -------------
-Hi there! My name is Pikachu, how are you today?  | I'm doing fine! I'm the most amazing student you'll ever meet!
-That's pretty cool! You're a pokemon trainer?  | No, I'm just a student.
 
-
-#### Sample2:
-
-Message  | Response
-------------- | -------------
-Hi there! My name is Pikachu, how are you today? | Hello?
-Heya! What's up? | I'm in the middle of an internship!
-Oh that sounds fun! What's the internship about? | Interning is a great way to learn about a company and make some great connections!
-
-
-#### Sample3:
-
-Message  | Response
-------------- | -------------
-Hey there! My name is Twisted, what's up man? | What are you doing here? Where are you from?
-I don't know! I was just walking to the store. I'm from the east side. Sorry if I startled you! | Yeah, you're a real a--hole.
-So what's up man? How've you been? | I haven't been good lately.
-Aw that sucs, why? | Well, my mom is in the hospital and my dad is going through some hard times.
-ouch! I hope they get well soon.. I'm really sorry to hear that! | Ugh, I can't say that. But you're right.
-So what else have you been upto? | I was kinda hanging out with a girl that I met at the mall.
-Oh that sounds fun! Is she cute? | Yeah, she's really pretty.
-Awesome man! Well, I'll leave you to it! Have a good day! | Yes!
-
-
-~~This is at temperature 1 and top_p of 0.75, the bot sets the length in chatbot mode to full 17-word sentences. When input in this mode is > 1.5 sentences it counts as two sentences or 34 words.~~ For a list of grammarly scores please see [/SCORES.MD](/SCORES.md). The current length of processing is set to input words * 1.5 rounded. Temperature is set at 1, top_p is set at 0.000001.
+For a list of grammarly scores please see [/SCORES.MD](/SCORES.md). The current length of processing is set to input words * 1.5 rounded. Temperature is set at 1, top_p is set at 0.000001.
 
 
 

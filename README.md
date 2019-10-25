@@ -84,7 +84,29 @@ Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You:
 ==========
 ```
 
-For a list of grammarly scores please see [/SCORES.MD](/SCORES.md). The current length of processing is set to input words * 1.5 rounded. Temperature is set at 1, top_p is set at 0.000001.
+For a list of grammarly scores please see [/SCORES.MD](/SCORES.md). The current length of processing is set to input words * 1.5 rounded. Temperature is set at 1, top_p is set at 0.01.
+
+Here's a example without the learning mode, that will need more work in the future:
+
+```
+You're a smelly tiger plush! I need to give you a bath.
+Computing...
+I'm not a smelly tiger plush.
+Reply:
+Yes you are! Hurry up and get in the bathtub, the water is warm!
+Computing...
+I'm not going to the bathtub, I'm going to the kitchen.
+Reply:
+Hey! You better get back here!
+Computing...
+I'm not going anywhere!
+Reply:
+Then get in the bath tub!
+Computing...
+I'm not going to get in the bath.```
+```
+
+
 
 
 

@@ -340,9 +340,7 @@ def interact_model(bot, update, top_p, temperature, mult):
         raw_text = penguin
     tx = float(top_p)
     cax = float(cat)
-    lex = float(length)
     ta = ((1-tx)/cax)
-    tn = (ta * lex)
     top_p = ((tx) + (ta))
     if top_p > 1:
         top_p = 1

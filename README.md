@@ -84,7 +84,7 @@ Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You:
 ==========
 ```
 
-For a list of grammarly scores please see [/SCORES.MD](/SCORES.md). The current length of processing is set to input words * 1.5 rounded. Temperature is set at 1, top_p is set at 0.01.
+For a list of grammarly scores please see [/SCORES.MD](/SCORES.md).
 
 Here's a example without the learning mode, that will need more work in the future:
 

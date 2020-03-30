@@ -86,7 +86,7 @@ Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You:
 
 For a list of grammarly scores please see [/SCORES.MD](/SCORES.md).
 
-Here's a example without the learning mode, that will need more work in the future:
+Here's a example without the learning mode, that will need more work in the future.. I belive this was set with the learning mode off and a top_p of 0.01:
 
 ```
 You're a smelly tiger plush! I need to give you a bath.

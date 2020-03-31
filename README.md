@@ -26,7 +26,7 @@ or
 
 ```python3 -m pip install python-telegram-bot```
 
-4. Input your telegram botfather bot key in the python file/
+4. Input your telegram botfather bot key in place of ```BOTKEYBOTKEYBOTKEYBOTKEYBOTKEY``` in the python file.
 
 5. run: ```python3 src/GPT2-Learning.py```
 
@@ -86,7 +86,7 @@ Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You:
 
 For a list of grammarly scores please see [/SCORES.MD](/SCORES.md).
 
-Here's a example without the learning mode, that will need more work in the future.. I belive this was set with the learning mode off and a top_p of 0.01:
+Here's a example without the learning mode, that will need more work in the future.. I belive this was set with the learning mode off and a top_p of 0.01 before a variable top_p was coded in:
 
 ```
 You're a smelly tiger plush! I need to give you a bath.
@@ -103,7 +103,7 @@ I'm not going anywhere!
 Reply:
 Then get in the bath tub!
 Computing...
-I'm not going to get in the bath.```
+I'm not going to get in the bath.
 ```
 
 

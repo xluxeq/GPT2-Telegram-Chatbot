@@ -308,7 +308,10 @@ def wait(bot, update, top_p, temperature, mult):
 
 def interact_model(bot, update, top_p, temperature, mult):
     model_name = '1558M'
-    seed = random.randint(1, 4294967295)
+    seed = random.randint(1431655765, 2863311530)
+    # random.randint(1, 4294967295)
+    # random.randint(1073741824, 3221225471)
+    # random.randint(1431655765, 2863311530)
     nsamples = 1
     batch_size = 1
     top_k = 0

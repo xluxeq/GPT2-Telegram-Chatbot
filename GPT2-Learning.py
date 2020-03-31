@@ -250,9 +250,13 @@ def regex(mew):
     meow = mew
     if "Me:" in meow:
         meow = meow[0:meow.find('Me:')]
+        if "You:" in meow:
+            meow = meow[0:meow.find('You:')]
         return meow
     if "You:" in meow:
         meow = meow[0:meow.find('You:')]
+        if "Me:" in meow:
+            meow = meow[0:meow.find('Me:')]
         return meow
     if "?" in meow:
         meow = meow[0:meow.find('?')]

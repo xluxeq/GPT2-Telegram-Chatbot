@@ -38,7 +38,7 @@ help - Show quick help command.
 chatbot - Chatbot mode, me+you string edit and open-ended questions.
 finish - Default finish sentence command counting words as output length.
 learnon - Turn on sentence compilation with Me+you string for conversation.
-learnoff - Turn off the sentnce compilation.
+learnoff - Turn off the sentence compilation.
 learnreset - Reset the learned conversation.
 ```
 

@@ -84,28 +84,46 @@ Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You:
 
 For a list of grammarly scores please see [/SCORES.MD](/SCORES.md).
 
-Here's a example without the learning mode, that will need more work in the future.. I belive this was set with the learning mode off and a top_p of 0.01 before a variable top_p was coded in:
+Here's a sample in learning chatbot mode with the latest gpt-2 database:
 
 ```
-You're a smelly tiger plush! I need to give you a bath.
-Computing...
-I'm not a smelly tiger plush.
-Reply:
-Yes you are! Hurry up and get in the bathtub, the water is warm!
-Computing...
-I'm not going to the bathtub, I'm going to the kitchen.
-Reply:
-Hey! You better get back here!
-Computing...
-I'm not going anywhere!
-Reply:
-Then get in the bath tub!
-Computing...
-I'm not going to get in the bath.
+@me:
+Hello! How are you today?
+ 
+@gpt2bot:
+I'm fine. How are you?
+ 
+@me:
+Good, just watching financial news. It's pretty boring. What are you upto?
+ 
+@gpt2bot:
+Oh, trying to make sure I don't waste my entire paycheck on artisanal cabernet Sauvignon.
+ 
+@me:
+Funny. I don't like wine that much though. Do you smoke weed?
+ 
+@gpt2bot:
+I once was a minor scotch bar-tender in Texas.
+ 
+@me:
+So is that a yes? lol Do you smoke weed or not?
+ 
+@gpt2bot:
+No, but I wish I could. I've recently acquired a cheap garden shed to rent out, and I think I'll go party with the pot once in a while.
+ 
+@me:
+Why can't you smoke weed? I guess you don't live in a legal state? Yeah I would too.
+ 
+@gpt2bot:
+Weed is legal in California and Washington. In Arizona you can't have it at all. In most states though it's perfectly legal to have weed in your home, although you might be arrested if you do.
+ 
+@me:
+Ah that explains it. I'm okay with it being prescribed by a doctor. I wish they'd federally tax it and legalize it though.
+ 
+@gpt2bot:
+I'm sure they'll come up with something. I have to deal with the law every day though. You've got to see the homeless guy right next to you. He's absolutely scum. I guess that's my cannabis that night.
+
 ```
-
-
-
 
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***

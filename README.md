@@ -111,7 +111,6 @@ Weed is legal in California and Washington. In Arizona you can't have it at all.
 Ah that explains it. I'm okay with it being prescribed by a doctor. I wish they'd federally tax it and legalize it though.
 @gpt2bot:
 I'm sure they'll come up with something. I have to deal with the law every day though. You've got to see the homeless guy right next to you. He's absolutely scum. I guess that's my cannabis that night.
-
 ```
 
 

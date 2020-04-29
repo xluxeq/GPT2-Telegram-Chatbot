@@ -14,7 +14,7 @@ or
 
 ```python3 -m pip install tensorflow-gpu```
 
-Tip: I doubt a regular user would have a GPU that could fit the most recent database into memory. I don't use GPU computing personally.
+Tip: I doubt a regular user would have a GPU that could fit the most recent database into memory. I don't use GPU computing personally. The bot requires a good chunk of memory for CPU processing. (I use 16 GB, it often takes 14G of free memory loaded.) 
 
 ...
 
@@ -22,17 +22,18 @@ Tip: I doubt a regular user would have a GPU that could fit the most recent data
 
 ```python3 download_model.py 1558M```
 
-2. Place this file in the src/ folder.
+2. Place GPT2-Learning.py file into the src/ folder.
 
 3. Install python-telegram-bot with 
 
 ```python3 -m pip install python-telegram-bot```
 
-4. Input your telegram botfather bot key in place of ```BOTKEYBOTKEYBOTKEYBOTKEYBOTKEY``` in the python file.
+4. Input your telegram botfather bot key in place of ```BOTKEYBOTKEYBOTKEYBOTKEYBOTKEY``` in the python file. You can get this on telegram from the @botfather account. 
 
 5. run: ```python3 src/GPT2-Learning.py```
 
-If needed use the start script that loops the bot python3 command in case of crashes. You can place this in the gpt-2 folder. Take a look at the file for reference. The bot requires a good chunk of memory for CPU processing. (I use 16 GB.) 
+If needed use the start script that loops the bot python3 command in case of crashes. You can place this in the gpt-2 folder. Take a look at the file for reference. 
+
 ### For quick command reference:
 
 ```

@@ -14,6 +14,8 @@ or
 
 ```python3 -m pip install tensorflow-gpu```
 
+Tip: I doubt a regular user would have a GPU that could fit the most recent database into memory. I don't use GPU computing personally.
+
 ...
 
 ```python3 -m pip install -r requirements.txt```
@@ -30,8 +32,7 @@ or
 
 5. run: ```python3 src/GPT2-Learning.py```
 
-If needed create a shell script that loops the bot python3 command in case of crashes. The bot requires a good chunk of memory for CPU processing. (I use 16 GB.)
-
+If needed use the start script that loops the bot python3 command in case of crashes. You can place this in the gpt-2 folder. Take a look at the file for reference. The bot requires a good chunk of memory for CPU processing. (I use 16 GB.) 
 ### For quick command reference:
 
 ```

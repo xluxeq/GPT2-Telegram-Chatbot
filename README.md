@@ -18,8 +18,6 @@ Tip: I doubt a regular user would have a GPU that could fit the most recent data
 
 ...
 
-```python3 -m pip install -r requirements.txt```
-
 ```python3 download_model.py 1558M```
 
 2. Place GPT2-Learning.py file into the src/ folder.

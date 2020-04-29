@@ -28,7 +28,7 @@ or
 
 5. run: ```python3 src/GPT2-Learning.py```
 
-If needed create a shell script that loops the bot python3 command in case of crashes. The bot requires atleast 8GB of free memory, (16GB preferred and a dual-core processor.) 
+If needed create a shell script that loops the bot python3 command in case of crashes. The bot requires a good chunk of memory for CPU processing. (I use 16 GB.)
 
 ### For quick command reference:
 

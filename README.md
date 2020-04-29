@@ -6,7 +6,7 @@ GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probab
 
 ### Installation/How to use:
 
-1. Install gpt-2 as normal IE:
+1. Install gpt-2 as normal from here: https://github.com/openai/gpt-2
 
 ```python3 -m pip install tensorflow```
 
@@ -17,6 +17,8 @@ or
 ...
 
 ```python3 -m pip install -r requirements.txt```
+
+```python3 download_model.py 1558M```
 
 2. Place this file in the src/ folder.
 

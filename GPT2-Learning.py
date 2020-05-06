@@ -337,6 +337,8 @@ def interact_model(bot, update, top_p, temperature, mult):
         cat = len(penguin.split(" "))
         rng = cat * mult
         length = round(rng)
+        if length > 1024:
+            length = 1024
         wolf = "You: " + penguin
         initial = wolf + " Me:"
         raw_text = learning + initial
@@ -344,6 +346,8 @@ def interact_model(bot, update, top_p, temperature, mult):
         cat = len(penguin.split(" "))
         rng = cat * mult
         length = round(rng)
+        if length > 1024:
+            length = 1024
         raw_text = penguin
     tx = float(top_p)
     cax = float(cat)

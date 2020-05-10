@@ -46,41 +46,27 @@ learnreset - Reset the learned conversation.
 
 ### Example of learning mode backend:
 ```
-INFO:tensorflow:Restoring parameters from models/774M/model.ckpt
-2019-10-16 20:05:55,273 - tensorflow - INFO - Restoring parameters from models/774M/model.ckpt
+INFO:tensorflow:Restoring parameters from models/1558M/model.ckpt
+2020-05-10 14:19:43,794 - tensorflow - INFO - Restoring parameters from models/1558M/model.ckpt
 ==========
-Before splitlines:  I'm in the middle of an internship! I'm a new intern here at Wh
-==========
-==========
-Mode: True
-Learn: True
-Length: 17
-==========
-Before regex:  I'm in the middle of an internship! I'm a new intern here at Wh
-==========
-Output:  I'm in the middle of an internship!
-==========
-Raw_text or Original: Me: Hi there! My name is Pikachu, how are you today? You: Hello?  Me: Heya! What's up? You:
-==========
-Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You: Hello?  Me: Heya! What's up? You: I'm in the middle of an internship!
-==========
-INFO:tensorflow:Restoring parameters from models/774M/model.ckpt
-2019-10-16 20:08:00,910 - tensorflow - INFO - Restoring parameters from models/774M/model.ckpt
-==========
-Before splitlines:  Interning is a great way to learn about a company and make some great connections!
+Before splitlines:  Nothing special. Nothing exciting in particular. I just wanna chill out for a bit. You: I'll try to keep my spirits up. Just keep in mind that today's the 10th anniversary of the citywide strike
 ==========
 ==========
 Mode: True
 Learn: True
-Length: 17
+Length: 44
 ==========
-Before regex:  Interning is a great way to learn about a company and make some great connections!
+Before regex:  Nothing special. Nothing exciting in particular. I just wanna chill out for a bit. You: I'll try to keep my spirits up. Just keep in mind that today's the 10th anniversary of the citywide strike
 ==========
-Output:  Interning is a great way to learn about a company and make some great connections!
+Output:  Nothing special. Nothing exciting in particular. I just wanna chill out for a bit.
 ==========
-Raw_text or Original: Me: Hi there! My name is Pikachu, how are you today? You: Hello?  Me: Heya! What's up? You: I'm in the middle of an internship! Me: Oh that sounds fun! What's the internship about? You:
+Raw_text or Original: You: Hello! How are you today? Are you feeling alright? I hope you are doing well and not getting into any trouble. Me: Yeah, I'm fine. Do you want to make something to eat? You: I already made some food, but thanks! I had some jalapeno poppers. I made a ton of them last night after I sold a lawnmower to some folks I got for free earlier in the day. So what are your plans for the day? Me:
 ==========
-Learning text or Next: Me: Hi there! My name is Pikachu, how are you today? You: Hello?  Me: Heya! What's up? You: I'm in the middle of an internship! Me: Oh that sounds fun! What's the internship about? You: Interning is a great way to learn about a company and make some great connections!
+Learning text or Next: You: Hello! How are you today? Are you feeling alright? I hope you are doing well and not getting into any trouble. Me: Yeah, I'm fine. Do you want to make something to eat? You: I already made some food, but thanks! I had some jalapeno poppers. I made a ton of them last night after I sold a lawnmower to some folks I got for free earlier in the day. So what are your plans for the day? Me: Nothing special. Nothing exciting in particular. I just wanna chill out for a bit.
+==========
+top_p out: 0.8338636363636364
+==========
+top_p in: 0.83
 ==========
 ```
 

@@ -56,7 +56,8 @@ Me: Sounds alright. I coded on my chatbot project most of the morning. Was waiti
 Bot: I'm a web developer and engineer. It's fun.   
 Me: Cool! I'm also a coder and an ethical hacker. I mostly know how to code in Python but I've been unemployed for some time now after my spine injury. I wish I could have joined the military when I was younger. Were you ever in the military? 
 Bot: No. I'm not really too proud of my military career. It ended up taking a huge toll on my back.   
-Me: What happened to your back if you don't mind me asking? Bot: First of all, it's better than before. 
+Me: What happened to your back if you don't mind me asking?
+Bot: First of all, it's better than before. 
 Me: Well that's good to hear. Did you injure your back in the military or doing something else? 
 Bot: Nope. It's an old injury. 
 Me: Ah I see- Well I'll talk to you later. Sorry about your back! I hope we can catch up tomorrow! 

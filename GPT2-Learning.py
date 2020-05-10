@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 # You can set the settings here
 # Session timeout
-timstart = 1200
+timstart = 1500
 # Model logic (trained to usually)
 top = 0.83
 # Temperature
@@ -335,19 +335,33 @@ def interact_model(bot, update, top_p, temperature, mult):
 #############################################
     if mode == True:
         cat = len(penguin.split(" "))
-        rng = cat * mult
-        length = round(rng)
-        if length > 250:
-            length = 250
+        if cat > 300:
+            update.message.reply_text('Input text is too long.')
+            return
+        length = cat
         wolf = "You: " + penguin
         initial = wolf + " Me:"
         raw_text = learning + initial
+        tgt = len(raw_text.split(" "))
+        if tgt > 300:
+            while tgt > 300:
+                print("Reducing memory of chat.")
+                raw_text = raw_text.split('You:', 1)[-1]
+                raw_text = "You:" + raw_text
+                tgt = len(raw_text.split(" "))
+                if tgt > 300:
+                    print("Reducing memory of chat.")
+                    raw_text = raw_text.split('Me:', 1)[-1]
+                    raw_text = "Me:" + raw_text
+                    tgt = len(raw_text.split(" "))
+            print("FINAL MEMORY REDUCTION:")
+            print(raw_text)
     if mode == False:
         cat = len(penguin.split(" "))
-        rng = cat
-        length = round(rng)
-        if length > 250:
-            length = 250
+        length = cat
+        if length > 300:
+            update.message.reply_text('Input text is too long.')
+            return
         raw_text = penguin
     tx = float(top_p)
     cax = float(cat)
@@ -401,7 +415,11 @@ def interact_model(bot, update, top_p, temperature, mult):
                 stripes = pika.encode(encoding=sys.stdout.encoding,errors='ignore')
                 tigger = stripes.decode("utf-8")
                 mew = str(tigger)
-                meow = regex(mew)
+                # disable any regex on finishsentence mode.
+                if mode == True:
+                    meow = regex(mew)
+                else:
+                    meow = mew
                 if learn == True:
                     learning = raw_text + meow + " "
                 update.message.reply_text(meow) 

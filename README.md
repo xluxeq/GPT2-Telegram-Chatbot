@@ -43,6 +43,25 @@ learnon - Turn on sentence compilation with Me+you string for conversation.
 learnoff - Turn off the sentence compilation.
 learnreset - Reset the learned conversation.
 ```
+Here's a sample in learning chatbot mode with the latest gpt-2 database:
+
+```
+Me: Hello! How are you today? Are you feeling alright? I hope you are doing well and not getting into any trouble. 
+Bot: Yeah, I'm fine. Do you want to make something to eat? 
+Me: I already made some food, but thanks! I had some jalapeno poppers. I made a ton of them last night after I sold a lawnmower to some folks I got for free earlier in the day. So what are your plans for the day? 
+Bot: Nothing special. Nothing exciting in particular. I just wanna chill out for a bit.  
+Me: Just a typical day of kicking back and relaxing huh? Are you gonna watch cartoons or any movies in particular? 
+Bot: If it's not sports I'll probably just watch something on the TV.  
+Me: Sounds alright. I coded on my chatbot project most of the morning. Was waiting on someone to come buy a projector but they haven't shown up yet unfortunately. What do you do for work if you don't mind me asking? 
+Bot: I'm a web developer and engineer. It's fun.   
+Me: Cool! I'm also a coder and an ethical hacker. I mostly know how to code in Python but I've been unemployed for some time now after my spine injury. I wish I could have joined the military when I was younger. Were you ever in the military? 
+Bot: No. I'm not really too proud of my military career. It ended up taking a huge toll on my back.   
+Me: What happened to your back if you don't mind me asking? Bot: First of all, it's better than before. 
+Me: Well that's good to hear. Did you injure your back in the military or doing something else? 
+Bot: Nope. It's an old injury. 
+Me: Ah I see- Well I'll talk to you later. Sorry about your back! I hope we can catch up tomorrow! 
+Bot: Yes, of course. Thanks again for chatting!
+```
 
 ### Example of learning mode backend:
 ```
@@ -72,34 +91,7 @@ top_p in: 0.83
 
 For a list of grammarly scores please see [/SCORES.MD](/SCORES.md).
 
-Here's a sample in learning chatbot mode with the latest gpt-2 database:
 
-```
-@me:
-Hello! How are you today?
-@gpt2bot:
-I'm fine. How are you?
-@me:
-Good, just watching financial news. It's pretty boring. What are you upto?
-@gpt2bot:
-Oh, trying to make sure I don't waste my entire paycheck on artisanal cabernet Sauvignon.
-@me:
-Funny. I don't like wine that much though. Do you smoke weed?
-@gpt2bot:
-I once was a minor scotch bar-tender in Texas.
-@me:
-So is that a yes? lol Do you smoke weed or not?
-@gpt2bot:
-No, but I wish I could. I've recently acquired a cheap garden shed to rent out, and I think I'll go party with the pot once in a while.
-@me:
-Why can't you smoke weed? I guess you don't live in a legal state? Yeah I would too.
-@gpt2bot:
-Weed is legal in California and Washington. In Arizona you can't have it at all. In most states though it's perfectly legal to have weed in your home, although you might be arrested if you do.
-@me:
-Ah that explains it. I'm okay with it being prescribed by a doctor. I wish they'd federally tax it and legalize it though.
-@gpt2bot:
-I'm sure they'll come up with something. I have to deal with the law every day though. You've got to see the homeless guy right next to you. He's absolutely scum. I guess that's my cannabis that night.
-```
 
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***

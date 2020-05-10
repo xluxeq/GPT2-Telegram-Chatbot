@@ -346,13 +346,13 @@ def interact_model(bot, update, top_p, temperature, mult):
         if tgt > 300:
             while tgt > 300:
                 print("Reducing memory of chat.")
-                raw_text = raw_text.split('You:', 1)[-1]
-                raw_text = "You:" + raw_text
+                raw_text = raw_text.split('Me:', 1)[-1]
+                raw_text = "Me:" + raw_text
                 tgt = len(raw_text.split(" "))
                 if tgt > 300:
                     print("Reducing memory of chat.")
-                    raw_text = raw_text.split('Me:', 1)[-1]
-                    raw_text = "Me:" + raw_text
+                    raw_text = raw_text.split('You:', 1)[-1]
+                    raw_text = "You:" + raw_text
                     tgt = len(raw_text.split(" "))
             print("FINAL MEMORY REDUCTION:")
             print(raw_text)

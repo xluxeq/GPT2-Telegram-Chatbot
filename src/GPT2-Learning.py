@@ -19,8 +19,10 @@ timstart = 1500
 top = 0.83
 # Temperature
 temp = 1.025
-# Length multiplier for top_p
-mx = 8
+# Multuplier/Divider for top_p/length calc.(The more words the more token consideration.)
+# Adjust in small increments. The target is theorhetically between 0.67 and 1. top_p of 0.01
+# was interesting.
+mx = 1
 # End settings
 
 temps = str(temp)
@@ -370,10 +372,14 @@ def interact_model(bot, update, top_p, temperature, mult):
         raw_text = penguin
     tx = float(top_p)
     cax = float(cat)
-    ta = ((1-tx)/cax)
+    cay = float(mx)
+    caz = float(cax * cay)
+    ta = ((1-tx)/caz)
     top_p = ((tx) + (ta))
     if top_p > 1:
         top_p = 1
+    if top_p < 0.005:
+        top_p = 0.005
 #############################################
     update.message.reply_text('Computing...')
     models_dir = os.path.expanduser(os.path.expandvars(models_dir))

@@ -6,8 +6,9 @@ GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probab
 
 ### Installation/How to use:
 
-1. Install gpt-2 as normal from here: https://github.com/openai/gpt-2
+1. Install python3 and python3-pip from apt or python3 website.
 
+2. Install tensorflow or tensorflow-gpu using pip.
 ```python3 -m pip install tensorflow```
 
 or
@@ -18,19 +19,16 @@ Tip: I doubt a regular user would have a GPU that could fit the most recent data
 
 ...
 
+3. Install requirements.txt
+```python3 -m pip install -r requirements.txt```
+
+4. Download model.
+
 ```python3 download_model.py 1558M```
 
-2. Place GPT2-Learning.py file into the src/ folder.
+5. Input your telegram botfather bot key in place of ```BOTKEYBOTKEYBOTKEYBOTKEYBOTKEY``` in the src/GPT2-Learning.py file near the bottom. You can get this on Telegram from the @botfather account. 
 
-3. Install python-telegram-bot with 
-
-```python3 -m pip install python-telegram-bot```
-
-4. Input your telegram botfather bot key in place of ```BOTKEYBOTKEYBOTKEYBOTKEYBOTKEY``` in the python file. You can get this on telegram from the @botfather account. 
-
-5. run: ```python3 src/GPT2-Learning.py```
-
-If needed use the start script that loops the bot python3 command in case of crashes. You can place this in the gpt-2 folder. Take a look at the file for reference. 
+6. run: ./start
 
 ### For quick command reference:
 
@@ -96,5 +94,6 @@ For a list of grammarly scores please see [/SCORES.MD](/SCORES.md).
 
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***
+***Inspired by ELIZA***
 
 [![HitCount](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot.svg)](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot)

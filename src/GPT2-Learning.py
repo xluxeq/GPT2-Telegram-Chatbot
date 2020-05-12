@@ -10,7 +10,9 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# You can set the settings here
+# You can set some settings here
+# Console output debug prints
+debug = False
 # Session timeout
 timstart = 1500
 # Model logic (trained to usually)
@@ -330,9 +332,9 @@ def interact_model(bot, update, top_p, temperature, mult):
     penguin = str(tex)
     global learning
     global learn
-    # This does some basic length processing.
     global mode
 #############################################
+    # This does some basic length processing.
     if mode == True:
         cat = len(penguin.split(" "))
         if cat > 300:
@@ -345,17 +347,20 @@ def interact_model(bot, update, top_p, temperature, mult):
         tgt = len(raw_text.split(" "))
         if tgt > 300:
             while tgt > 300:
-                print("Reducing memory of chat.")
+                if debug == True:
+                    print("Reducing memory of chat.")
                 raw_text = raw_text.split('Me:', 1)[-1]
                 raw_text = "Me:" + raw_text
                 tgt = len(raw_text.split(" "))
                 if tgt > 300:
-                    print("Reducing memory of chat.")
+                    if debug == True:
+                        print("Reducing memory of chat.")
                     raw_text = raw_text.split('You:', 1)[-1]
                     raw_text = "You:" + raw_text
                     tgt = len(raw_text.split(" "))
-            print("FINAL MEMORY REDUCTION:")
-            print(raw_text)
+            if debug == True:
+                print("FINAL MEMORY REDUCTION:")
+                print(raw_text)
     if mode == False:
         cat = len(penguin.split(" "))
         length = cat
@@ -405,9 +410,10 @@ def interact_model(bot, update, top_p, temperature, mult):
             for i in range(batch_size):
                 generated += 1
                 text = enc.decode(out[i])
-                print("==========")
-                print("Before splitlines: " + text)
-                print("==========")
+                if debug == True:
+                    print("==========")
+                    print("Before splitlines: " + text)
+                    print("==========")
                 if mode == True:
                     pika = text.splitlines()[0]
                 else:
@@ -422,30 +428,31 @@ def interact_model(bot, update, top_p, temperature, mult):
                     meow = mew
                 if learn == True:
                     learning = raw_text + meow + " "
-                update.message.reply_text(meow) 
-                print("==========")
-                mod = str(mode)
-                print("Mode: " + mod)
-                lear = str(learn)
-                print("Learn: " + lear)
-                lent = str(length)
-                print("Length: " + lent)
-                print("==========")
-                ball = str(pika)
-                print("Before regex: " + ball)
-                print("==========")
-                print("Output: " + meow)
-                print("==========")
-                print("Raw_text or Original: " + raw_text)
-                print("==========")
-                print("Learning text or Next: " + learning)
-                print("==========")
-                tps = str(top_p)
-                print("top_p out: " + tps)
-                print("==========")
-                tpa = str(tx)
-                print("top_p in: " + tpa)
-                print("==========")
+                update.message.reply_text(meow)
+                if debug == True:
+                    print("==========")
+                    mod = str(mode)
+                    print("Mode: " + mod)
+                    lear = str(learn)
+                    print("Learn: " + lear)
+                    lent = str(length)
+                    print("Length: " + lent)
+                    print("==========")
+                    ball = str(pika)
+                    print("Before regex: " + ball)
+                    print("==========")
+                    print("Output: " + meow)
+                    print("==========")
+                    print("Raw_text or Original: " + raw_text)
+                    print("==========")
+                    print("Learning text or Next: " + learning)
+                    print("==========")
+                    tps = str(top_p)
+                    print("top_p out: " + tps)
+                    print("==========")
+                    tpa = str(tx)
+                    print("top_p in: " + tpa)
+                    print("==========")
     sess.close()
 
 def error(bot, update):

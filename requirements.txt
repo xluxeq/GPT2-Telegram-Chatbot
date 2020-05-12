@@ -1,0 +1,4 @@
+tqdm
+regex
+fire
+python-telegram-bot

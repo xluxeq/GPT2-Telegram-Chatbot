@@ -29,7 +29,9 @@ Tip: I doubt a regular user would have a GPU that could fit the most recent data
 
 5. Input your telegram botfather bot key in place of ```BOTKEYBOTKEYBOTKEYBOTKEYBOTKEY``` in the src/GPT2-Learning.py file near the bottom. You can get this on Telegram from the @botfather account. 
 
-6. run: ./start
+6. Run: 
+
+```./start```
 
 ### For quick command reference:
 

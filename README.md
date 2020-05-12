@@ -1,4 +1,3 @@
-![Rosetta Stone Chatbot](header.png "Rosetta Stone Chatbot")
 ## GPT2-Telegram-Chatbot
 
 GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probably pass a turing test easily and I'd love for to get it turing test certified eventually. Feel free to make me PRs and I'll check out your code!
@@ -94,6 +93,7 @@ For a list of grammarly scores please see [/SCORES.MD](/SCORES.md).
 
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***
+
 ***Inspired by ELIZA***
 
 [![HitCount](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot.svg)](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot)

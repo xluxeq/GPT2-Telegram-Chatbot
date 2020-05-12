@@ -8,6 +8,7 @@ GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probab
 1. Install python3 and python3-pip from apt or python3 website.
 
 2. Install tensorflow or tensorflow-gpu using pip.
+
 ```python3 -m pip install tensorflow```
 
 or
@@ -19,6 +20,7 @@ Tip: I doubt a regular user would have a GPU that could fit the most recent data
 ...
 
 3. Install requirements.txt
+
 ```python3 -m pip install -r requirements.txt```
 
 4. Download model.

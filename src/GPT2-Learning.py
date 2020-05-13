@@ -253,15 +253,15 @@ def learnreset(bot, update):
 
 def regex(mew):
     meow = mew
-    if "They said:" in meow:
-        meow = meow[0:meow.find('They said:')]
-        if "I said:" in meow:
-            meow = meow[0:meow.find('I said:')]
+    if "You:" in meow:
+        meow = meow[0:meow.find('You:')]
+        if "Me:" in meow:
+            meow = meow[0:meow.find('Me:')]
         return meow
-    if "I said:" in meow:
-        meow = meow[0:meow.find('I said:')]
-        if "They said:" in meow:
-            meow = meow[0:meow.find('They said:')]
+    if "Me:" in meow:
+        meow = meow[0:meow.find('Me:')]
+        if "You:" in meow:
+            meow = meow[0:meow.find('You:')]
         return meow
     if "?" in meow:
         meow = meow[0:meow.find('?')]
@@ -324,12 +324,6 @@ def interact_model(bot, update, top_p, temperature, mult):
     nsamples = 1
     batch_size = 1
     top_k = 0
-    # Rating of settings I've tried for static top_p, these were run through grammarly.
-    # 0.67 - 99 ! Short responses 19/20 in context
-    # 0.69 - 99 ! Repetitive responses 20/20 in context
-    # 0.72 - 99 ! Readability 19/20 in context
-    # 0.73 - 99 ! Readability 20/20 in context
-    # Also set this to like 0.01 it does some crazy stuff. Just the learn mode doesn't work.
     models_dir = 'models'
     tex = update.message.text
     penguin = str(tex)
@@ -344,21 +338,21 @@ def interact_model(bot, update, top_p, temperature, mult):
             update.message.reply_text('Input text is too long.')
             return
         length = cat
-        wolf = 'They said: ' + penguin
-        initial = wolf + ' I said:'
+        wolf = 'You: ' + penguin
+        initial = wolf + ' Me:'
         raw_text = learning + initial
         tgt = len(raw_text.split(" "))
         if tgt > 300:
             while tgt > 300:
                 if debug == True:
                     print("Reducing memory of chat.")
-                raw_text = raw_text.split('I said:', 1)[-1]
+                raw_text = raw_text.split('Me:', 1)[-1]
                 raw_text = "Me:" + raw_text
                 tgt = len(raw_text.split(" "))
                 if tgt > 300:
                     if debug == True:
                         print("Reducing memory of chat.")
-                    raw_text = raw_text.split('They said:', 1)[-1]
+                    raw_text = raw_text.split('You:', 1)[-1]
                     raw_text = "You:" + raw_text
                     tgt = len(raw_text.split(" "))
             if debug == True:

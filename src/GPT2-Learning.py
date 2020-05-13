@@ -15,13 +15,12 @@ logger = logging.getLogger(__name__)
 debug = False
 # Session timeout
 timstart = 1500
-# Model logic (trained to usually)
-top = 0.83
-# Temperature
-temp = 1.025
-# Multuplier/Divider for top_p/length calc.(The more words the more token consideration.)
-# Adjust in small increments. The target is theorhetically between 0.67 and 1. top_p of 0.01
-# was interesting.
+# Model logic (trained to usually) 0.7-0.83 work well.
+top = 0.78
+# Temperature (refer to gpt-2 documentation)
+temp = 1
+# Multuplier/Divider for top_p/length calc.(The more words the more token learning when positive, top_p decreases.)
+# Adjust in small increments. The target is between 0.6 and 1 for top_p.
 mx = 1
 # End settings
 

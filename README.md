@@ -46,7 +46,6 @@ learnreset - Reset the learned conversation.
 ```
 Here's a sample in learning chatbot mode with the latest gpt-2 database and top_p set to 0.83:
 
-(top_p has been decreased to 0.78 by default)
 
 ```
 Me: Hello! How are you today? Are you feeling alright? I hope you are doing well and not getting into any trouble. 

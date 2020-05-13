@@ -1,6 +1,6 @@
 ## GPT2-Telegram-Chatbot
 
-GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probably pass a turing test easily and I'd love for to get it turing test certified eventually. Feel free to make me PRs and I'll check out your code!
+GPT2 Telegram chatbot that's been relatively tuned for chatting. It could probably pass a turing test easily and I'd love for to get it turing test certified eventually. Feel free to make me PRs and I'll check out your code! The bot isn't 100% accurate all the time. It has errors sometimes. It can be really crystal-ball like though if that's what you are looking for.
 
 
 ### Installation/How to use:

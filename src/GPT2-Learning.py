@@ -23,9 +23,9 @@ temp = 1
 # Adjust in small increments. The target is between 0.6 and 1 for top_p.
 mx = 1
 # Enable top_p instead of using 0 top_k
-top_p_enable = False
+top_p_enable = True
 # this basically seeds the context
-learning = "They said: Hello, how are you today? I said: I'm fine, thanks! "
+learning = ""
 
 # End settings
 mode = False

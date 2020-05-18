@@ -43,6 +43,7 @@ finish - Default finish sentence command counting words as output length.
 learnon - Turn on sentence compilation with Me+you string for conversation.
 learnoff - Turn off the sentence compilation.
 learnreset - Reset the learned conversation.
+retry - Retry the current computation.
 ```
 Here's a sample in learning chatbot mode with the latest gpt-2 database and top_p set to 0.83:
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-import fire, json, os, string, sys, threading, random, model, sample, encoder, logging, time
+import fire, json, os, string, sys, threading, random, model, sample, encoder, logging, time, language_check
 import numpy as np
 import tensorflow as tf
 
@@ -11,12 +10,13 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 # You can set some settings here
+tool = language_check.LanguageTool('en-US')
 # Console output debug prints
-debug = False
+debug = True
 # Session timeout
 timstart = 1500
 # Model logic (trained to usually) 0.7-0.83 work well.
-top = 0.83
+top = 0.7
 # Temperature (refer to gpt-2 documentation)
 temp = 1
 # Multuplier/Divider for top_p/length calc.(The more words the more token learning when positive, top_p decreases.)
@@ -31,9 +31,11 @@ learning = ""
 mode = False
 learn = False
 user = ""
+cache = ""
 running = False
 temps = str(temp)
 tpstring = str(top)
+
 # Define a few command handlers. These usually take the two arguments bot and
 # update. Error handlers also receive the raised TelegramError object in error.
 
@@ -84,11 +86,13 @@ def chatbot(bot, update):
     global user
     global tim
     global learning
+    global cache
     if user == "":
         user = update.message.from_user.id
         mode = True
         learn = False
         learning = ""
+        cache = ""
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -100,6 +104,7 @@ def chatbot(bot, update):
         mode = True
         learn = False
         learning = ""
+        cache = ""
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -154,11 +159,13 @@ def learnon(bot, update):
     global user
     global tim
     global learning
+    global cache
     if user == "":
         user = update.message.from_user.id
         mode = True
         learn = True
         learning = ""
+        cache = ""
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -170,6 +177,7 @@ def learnon(bot, update):
         mode = True
         learn = True
         learning = ""
+        cache = ""
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -278,26 +286,39 @@ def regex(mew):
     meow = "Error."
     return meow
 
-def runn(bot, update):
+
+def retry(bot, update):
+    retr = True
     top_p = top
     temperature = temp
     mult = mx
-    comput = threading.Thread(target=wait, args=(bot, update, top_p, temperature, mult,))
+    new = retr
+    comput = threading.Thread(target=wait, args=(bot, update, top_p, temperature, mult, new,))
     comput.start()
 
-def wait(bot, update, top_p, temperature, mult):
+def runn(bot, update):
+    retr = False
+    top_p = top
+    temperature = temp
+    mult = mx
+    new = retr
+    comput = threading.Thread(target=wait, args=(bot, update, top_p, temperature, mult, new,))
+    comput.start()
+
+def wait(bot, update, top_p, temperature, mult, new):
     global tim
     global user
     global running
     global mode
     global learn
     global learning
+    global cache
     if user == "":
         user = update.message.from_user.id
     if user == update.message.from_user.id:
         user = update.message.from_user.id
         tim = timstart
-        compute = threading.Thread(target=interact_model, args=(bot, update, top_p, temperature, mult,))
+        compute = threading.Thread(target=interact_model, args=(bot, update, top_p, temperature, mult, new,))
         compute.start()
         if running == False:
             while tim > 1:
@@ -308,6 +329,7 @@ def wait(bot, update, top_p, temperature, mult):
                 mode = False
                 learn = False
                 learning = ""
+                cache = ""
                 user = ""
                 update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
                 running = False
@@ -315,7 +337,7 @@ def wait(bot, update, top_p, temperature, mult):
         left = str(tim)
         update.message.reply_text('Bot is in use, current cooldown is: ' + left + ' seconds.')
 
-def interact_model(bot, update, top_p, temperature, mult):
+def interact_model(bot, update, top_p, temperature, mult, new):
     model_name = '1558M'
     seed = random.randint(1431655765, 2863311530)
     # random.randint(1, 4294967295)
@@ -326,27 +348,51 @@ def interact_model(bot, update, top_p, temperature, mult):
     top_k = 0
     models_dir = 'models'
     tex = update.message.text
-    penguin = str(tex)
+    text = str(tex)
+    txt = text
+    if debug == True:
+        print("Before grammar fix...")
+        print(txt)
+    matches = tool.check(txt)
+    gtx = language_check.correct(txt, matches)
+    rts = str(gtx)
+    penguin = rts
+    if debug == True:
+        print("After grammar fix...")
+        print(penguin)
     global learning
     global learn
     global mode
+    global cache
 #############################################
     # This does some basic length processing.
     if mode == True:
+        if new == True and cache:
+            penguin = cache[0:cache.find(' Me:')]
+            if debug == True:
+                print("Cache is...")
+                print(penguin)
         cat = len(penguin.split(" "))
         if cat > 300:
             update.message.reply_text('Input text is too long.')
             return
         length = cat
-        wolf = 'You: ' + penguin
-        initial = wolf + ' Me:'
-        raw_text = learning + initial
+        if new != True:
+            wolf = 'You: ' + penguin
+            initial = wolf + ' Me: '
+            raw_text = learning + initial            
+        if new == True and cache:
+            wolf = penguin
+            initial = wolf + ' Me: '
+            raw_text = initial
         tgt = len(raw_text.split(" "))
+        if new != True:
+            cache = raw_text
         if tgt > 300:
             while tgt > 300:
                 if debug == True:
                     print("Reducing memory of chat.")
-                raw_text = raw_text.split('Me:', 1)[-1]
+                raw_text = raw_text.split(' Me:', 1)[-1]
                 raw_text = "Me:" + raw_text
                 tgt = len(raw_text.split(" "))
                 if tgt > 300:
@@ -364,6 +410,13 @@ def interact_model(bot, update, top_p, temperature, mult):
         if length > 300:
             update.message.reply_text('Input text is too long.')
             return
+        if new != True:
+            cache = penguin
+        if new == True and cache:
+            penguin = cache
+            if debug == True:
+                print("Cache is...")
+                print(penguin)
         raw_text = penguin
     tx = float(top_p)
     cax = float(cat)
@@ -426,7 +479,17 @@ def interact_model(bot, update, top_p, temperature, mult):
                     mew = str(tigger)
                     # disable any regex on finishsentence mode.
                     if mode == True:
-                        meow = regex(mew)
+                        if debug == True:
+                            print("Before grammar fix...")
+                            print(mew)
+                        tex = mew
+                        matches = tool.check(tex)
+                        hits = language_check.correct(tex, matches)
+                        hts = str(hits)
+                        if debug == True:
+                            print("After grammar fix...")
+                            print(hts)
+                        meow = regex(hts)
                     else:
                         meow = mew
                     if learn == True:
@@ -480,7 +543,6 @@ def interact_model(bot, update, top_p, temperature, mult):
                 for i in range(batch_size):
                     generated += 1
                     text = enc.decode(out[i])
-
                     if debug == True:
                         print("==========")
                         print("Before splitlines: " + text)
@@ -494,7 +556,17 @@ def interact_model(bot, update, top_p, temperature, mult):
                     mew = str(tigger)
                     # disable any regex on finishsentence mode.
                     if mode == True:
-                        meow = regex(mew)
+                        if debug == True:
+                            print("Before grammar fix...")
+                            print(mew)
+                        tex = mew
+                        matches = tool.check(tex)
+                        hits = language_check.correct(tex, matches)
+                        hts = str(hits)
+                        if debug == True:
+                            print("After grammar fix...")
+                            print(hts)
+                        meow = regex(hts)
                     else:
                         meow = mew
                     if learn == True:
@@ -546,6 +618,7 @@ def main():
     dp.add_handler(CommandHandler("learnon", learnon))
     dp.add_handler(CommandHandler("learnoff", learnoff))
     dp.add_handler(CommandHandler("learnreset", learnreset))
+    dp.add_handler(CommandHandler("retry", retry))
     # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, runn))
     # log all errors

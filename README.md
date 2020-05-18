@@ -5,7 +5,7 @@ GPT2 Telegram chatbot that's been relatively tuned for chatting. Feel free to ma
 
 ### Installation/How to use:
 
-1. Install python3 and python3-pip from apt or python3 website.
+1. Install python3 and python3-pip from apt or python3 website and java/jre from apt or the java website.
 
 2. Install tensorflow or tensorflow-gpu using pip.
 

@@ -4,6 +4,8 @@ GPT2 Telegram chatbot that's been relatively tuned for chatting. Feel free to ma
 
 I'm probably not going to do much more coding on this. It gave me thoughts on how much the turing test is obsolete. The turing test is supposed to sound "human" but means it has constraints of high IQ. The bot only learns from it's input and will have errors on output. Nobody is perfect.
 
+Since the bot consumes so much memory, I have it programmed in a round-robin sort of mode. Each input will reset a timer on your account ID, once the timer runs down the bot is free for other users to use. You will be notified when the timer runs down, and other users can see how much time is left and if the bot is in use.
+
 
 ### Installation/How to use:
 

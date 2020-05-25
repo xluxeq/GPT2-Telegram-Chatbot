@@ -2,4 +2,3 @@ tqdm
 regex
 fire
 python-telegram-bot
-language-check

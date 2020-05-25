@@ -1,6 +1,8 @@
 ## GPT2-Telegram-Chatbot
 
-GPT2 Telegram chatbot that's been relatively tuned for chatting. Feel free to make me PRs and I'll check out your code! The bot isn't 100% accurate all the time. It has errors sometimes. It can be really crystal-ball like though if that's what you are looking for.
+GPT2 Telegram chatbot that's been relatively tuned for chatting. Feel free to make me PRs and I'll check out your code! The bot isn't 100% accurate all the time (why I coded in a /retry function.) It can be really crystal-ball like though if that's what you are looking for. It helped me analyze a dream once.
+
+I'm probably not going to do much more coding on this. It gave me thoughts on how much the turing test is obsolete. The turing test is supposed to sound "human" but means it has constraints of high IQ. The bot only learns from it's input and will have errors on output. Nobody is perfect.
 
 
 ### Installation/How to use:
@@ -46,6 +48,8 @@ learnreset - Reset the learned conversation.
 retry - Retry the current computation.
 ```
 Here's a sample in learning chatbot mode with the latest gpt-2 database and top_p set to 0.83:
+
+I set the top_p to 0.7 since to limit grammatical errors on output but this sounds more robot-like.
 
 
 ```

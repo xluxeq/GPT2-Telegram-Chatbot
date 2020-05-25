@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-import fire, json, os, string, sys, threading, random, model, sample, encoder, logging, time, language_check
+import fire, json, os, string, sys, threading, random, model, sample, encoder, logging, time
 import numpy as np
 import tensorflow as tf
 import re
@@ -9,8 +10,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# You can set some settings here
-tool = language_check.LanguageTool('en-US')
 # Console output debug prints
 debug = True
 # Session timeout
@@ -350,18 +349,7 @@ def interact_model(bot, update, top_p, temperature, mult, new):
     top_k = 0
     models_dir = 'models'
     tex = update.message.text
-    text = str(tex)
-    txt = text
-    if debug == True:
-        print("Before grammar fix...")
-        print(txt)
-    matches = tool.check(txt)
-    gtx = language_check.correct(txt, matches)
-    rts = str(gtx)
-    penguin = rts
-    if debug == True:
-        print("After grammar fix...")
-        print(penguin)
+    penguin = str(tex)
     global learning
     global learn
     global mode
@@ -371,7 +359,6 @@ def interact_model(bot, update, top_p, temperature, mult, new):
     # This does some basic length processing.
     if mode == True:
         if new == True and cache:
-            # penguin = cache[0:cache.find(' Me:')]
             m = re.search('.* Me: ', cache)
             raw_text = m.group(0)
             if debug == True:
@@ -557,17 +544,7 @@ def interact_model(bot, update, top_p, temperature, mult, new):
                     mew = str(tigger)
                     # disable any regex on finishsentence mode.
                     if mode == True:
-                        if debug == True:
-                            print("Before grammar fix...")
-                            print(mew)
-                        tex = mew
-                        matches = tool.check(tex)
-                        hits = language_check.correct(tex, matches)
-                        hts = str(hits)
-                        if debug == True:
-                            print("After grammar fix...")
-                            print(hts)
-                        meow = regex(hts)
+                        meow = regex(mew)
                     else:
                         meow = mew
                     if learn == True:

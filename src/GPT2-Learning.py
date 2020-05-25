@@ -400,6 +400,7 @@ def interact_model(bot, update, top_p, temperature, mult, new):
             m = re.search('.* Me: ', cache)
             raw_text = m.group(0)
             length = cachel
+            cat = length
             if debug == True:
                 print("Cache is...")
                 print(raw_text)
@@ -439,6 +440,7 @@ def interact_model(bot, update, top_p, temperature, mult, new):
         if new == True and cache:
             penguin = cache
             length = cachel
+            cat = length
             if debug == True:
                 print("Cache is...")
                 print(penguin)

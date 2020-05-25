@@ -1,6 +1,6 @@
 ## GPT2-Telegram-Chatbot
 
-GPT2 Telegram chatbot that's been relatively tuned for chatting. Feel free to make me PRs and I'll check out your code! The bot isn't 100% accurate all the time (why I coded in a /retry function.) It can be really crystal-ball like though if that's what you are looking for. It helped me analyze a dream once.
+A GPT-2 Telegram chatbot that's been relatively tuned for chatting. Feel free to make me PRs and I'll check out your code! The bot isn't 100% accurate all the time (why I coded in a /retry function.) It can be really crystal-ball like though if that's what you are looking for. It helped me analyze a dream once.
 
 I'm probably not going to do much more coding on this. It gave me thoughts on how much the turing test is obsolete. The turing test is supposed to sound "human" but means it has constraints of high IQ. The bot only learns from it's input and will have errors on output. Nobody is perfect.
 

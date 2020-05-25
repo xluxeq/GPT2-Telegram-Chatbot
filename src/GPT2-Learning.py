@@ -49,8 +49,8 @@ def start(bot, update):
     global learning
     if user == "":
         user = update.message.from_user.id
-        mode = False
-        learn = False
+        mode = True
+        learn = True
         learning = ""
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
@@ -60,8 +60,8 @@ def start(bot, update):
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M I am in the finishsentence mode.')
         return
     if user == update.message.from_user.id:
-        mode = False
-        learn = False
+        mode = True
+        learn = True
         learning = ""
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')

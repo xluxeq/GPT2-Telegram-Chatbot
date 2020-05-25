@@ -9,7 +9,7 @@ Since the bot consumes so much memory, I have it programmed in a round-robin sor
 
 ### Installation/How to use:
 
-1. Install python3 and python3-pip from apt or python3 website and java/jre from apt or the java website.
+1. Install python3 and python3-pip from apt or python3 website.
 
 2. Install tensorflow or tensorflow-gpu using pip.
 

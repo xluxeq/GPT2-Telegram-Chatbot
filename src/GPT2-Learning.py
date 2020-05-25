@@ -3,7 +3,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import fire, json, os, string, sys, threading, random, model, sample, encoder, logging, time, language_check
 import numpy as np
 import tensorflow as tf
-
+import re
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -371,26 +371,24 @@ def interact_model(bot, update, top_p, temperature, mult, new):
     # This does some basic length processing.
     if mode == True:
         if new == True and cache:
-            penguin = cache[0:cache.find(' Me:')]
+            # penguin = cache[0:cache.find(' Me:')]
+            m = re.search('.* Me: ', cache)
+            raw_text = m.group(0)
             if debug == True:
                 print("Cache is...")
-                print(penguin)
+                print(raw_text)
+        if new != True:
+            wolf = 'You: ' + penguin
+            initial = wolf + ' Me: '
+            raw_text = learning + initial            
+        if new != True:
+            cache = raw_text
         cat = len(penguin.split(" "))
         if cat > 300:
             update.message.reply_text('Input text is too long.')
             return
         length = cat * lx
-        if new != True:
-            wolf = 'You: ' + penguin
-            initial = wolf + ' Me: '
-            raw_text = learning + initial            
-        if new == True and cache:
-            wolf = penguin
-            initial = wolf + ' Me: '
-            raw_text = initial
         tgt = len(raw_text.split(" "))
-        if new != True:
-            cache = raw_text
         if tgt > 300:
             while tgt > 300:
                 if debug == True:

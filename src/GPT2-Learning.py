@@ -22,6 +22,8 @@ temp = 1
 # Multuplier/Divider for top_p/length calc.(The more words the more token learning when positive, top_p decreases.)
 # Adjust in small increments. The target is between 0.6 and 1 for top_p.
 mx = 1
+# Input to Output length multiplier for chat.
+lx = 3
 # Enable top_p instead of using 0 top_k
 top_p_enable = True
 # this basically seeds the context
@@ -364,6 +366,7 @@ def interact_model(bot, update, top_p, temperature, mult, new):
     global learn
     global mode
     global cache
+    global lx
 #############################################
     # This does some basic length processing.
     if mode == True:
@@ -376,7 +379,7 @@ def interact_model(bot, update, top_p, temperature, mult, new):
         if cat > 300:
             update.message.reply_text('Input text is too long.')
             return
-        length = cat
+        length = cat * lx
         if new != True:
             wolf = 'You: ' + penguin
             initial = wolf + ' Me: '

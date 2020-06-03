@@ -35,7 +35,6 @@ Top-P | Score
 0.89 | 87
 0.90 | 79
 
-I would choose 0.7 or 0.69 as a starting point, I was previously using 0.83 in tests. The code usually fluctuates 0.045 top_p in adjustments.
 
 Here is a list of length scores run through grammarly at 0.73 top_p:
 Somewhere along here I started playing with the context words. i.e. in the code: It adds "Response:" and "Reply:" before anything computed and before it was "Me:" + "You:".

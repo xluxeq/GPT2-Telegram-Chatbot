@@ -96,7 +96,10 @@ top_p in: 0.83
 
 For a list of grammarly scores please see [/SCORES.MD](/SCORES.md).
 
+Tip: 
 
+0.77 top_p can sound emotional, confused and copycat-ish.
+0.66 can sound more thought-out and literal but can have ascii errors.
 
 
 ***Inspired by the book When HARLIE Was One by David Gerrold***

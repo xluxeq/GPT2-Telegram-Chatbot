@@ -18,14 +18,11 @@ timstart = 1500
 top = 0.7
 # Temperature (refer to gpt-2 documentation)
 temp = 1
-# Multuplier/Divider for top_p/length calc.(The more words the more token learning when positive, top_p decreases.)
-# Adjust in small increments. The target is between 0.6 and 1 for top_p.
+# Multuplier/Divider for top_p/length calc. Decreasing decreases top_p multiplier.
 mx = 1
-# Input to Output length multiplier for chat.
-lx = 3
 # Enable top_p instead of using 0 top_k
 top_p_enable = True
-# this basically seeds the context
+# This is the start of the learning context.
 learning = ""
 
 # End settings
@@ -33,7 +30,6 @@ mode = False
 learn = False
 user = ""
 cache = ""
-cachel = 1
 running = False
 temps = str(temp)
 tpstring = str(top)
@@ -50,14 +46,12 @@ def start(bot, update):
     global tim
     global learning
     global cache
-    global cachel
     if user == "":
         user = update.message.from_user.id
         mode = True
         learn = True
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -70,7 +64,6 @@ def start(bot, update):
         learn = True
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -95,14 +88,12 @@ def chatbot(bot, update):
     global tim
     global learning
     global cache
-    global cachel
     if user == "":
         user = update.message.from_user.id
         mode = True
         learn = False
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -115,7 +106,6 @@ def chatbot(bot, update):
         learn = False
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -136,14 +126,12 @@ def finish(bot, update):
     global tim
     global learning
     global cache
-    global cachel
     if user == "":
         user = update.message.from_user.id
         mode = False
         learn = False
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -156,7 +144,6 @@ def finish(bot, update):
         learn = False
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -177,14 +164,12 @@ def learnon(bot, update):
     global tim
     global learning
     global cache
-    global cachel
     if user == "":
         user = update.message.from_user.id
         mode = True
         learn = True
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -197,7 +182,6 @@ def learnon(bot, update):
         learn = True
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -218,14 +202,12 @@ def learnoff(bot, update):
     global tim
     global learning
     global cache
-    global cachel
     if user == "":
         user = update.message.from_user.id
         mode = True
         learn = False
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -238,7 +220,6 @@ def learnoff(bot, update):
         learn = False
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -259,14 +240,12 @@ def learnreset(bot, update):
     global tim
     global learning
     global cache
-    global cachel
     if user == "":
         user = update.message.from_user.id
         mode = True
         learn = True
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -279,7 +258,6 @@ def learnreset(bot, update):
         learn = True
         learning = ""
         cache = ""
-        cachel = 1
         if mode == True and learn == True:
             update.message.reply_text('Send a message! Get it computed! 1558M Settings: Logic: ' + tpstring + ' Rate:' + temps + ' GPT-2 1558M. I am in the learning chatbot mode.')
         if mode == True and learn == False:
@@ -345,7 +323,6 @@ def wait(bot, update, top_p, temperature, mult, new):
     global learn
     global learning
     global cache
-    global cachel
     if user == "":
         user = update.message.from_user.id
     if user == update.message.from_user.id:
@@ -363,7 +340,6 @@ def wait(bot, update, top_p, temperature, mult, new):
                 learn = False
                 learning = ""
                 cache = ""
-                cachel = 1
                 user = ""
                 update.message.reply_text('Timer has run down, bot has been reset into the default mode.')
                 running = False
@@ -387,20 +363,29 @@ def interact_model(bot, update, top_p, temperature, mult, new):
     global learn
     global mode
     global cache
-    global cachel
-    global lx
 #############################################
     # This does some basic length processing.
     if mode == True:
-        cat = len(penguin.split(" "))
+        cat = len(penguin.split())
         if cat > 300:
             update.message.reply_text('Input text is too long.')
             return
         if new == True and cache:
             m = re.search('.* Me: ', cache)
             raw_text = m.group(0)
-            length = cachel
-            cat = length
+            cac = len(raw_text.split())
+            cat = cac - 2   
+            length = cat
+            if cat < 20:
+                length = 20
+            if cat > 20:
+                length = 30
+            if cat > 30:
+               length =  40
+            if cat > 40:
+                length = 50
+            if cat > 50:
+                length = 60
             if debug == True:
                 print("Cache is...")
                 print(raw_text)
@@ -408,38 +393,46 @@ def interact_model(bot, update, top_p, temperature, mult, new):
             wolf = 'You: ' + penguin
             initial = wolf + ' Me: '
             raw_text = learning + initial
-            length = cat * lx        
+            length = cat
+            if cat < 20:
+                length = 20
+            if cat > 20:
+                length = 30
+            if cat > 30:
+               length =  40
+            if cat > 40:
+                length = 50
+            if cat > 50:
+                length = 60               
             cache = raw_text
-            cachel = length
-        tgt = len(raw_text.split(" "))
+        tgt = len(raw_text.split())
         if tgt > 300:
             while tgt > 300:
                 if debug == True:
                     print("Reducing memory of chat.")
                 raw_text = raw_text.split(' Me:', 1)[-1]
                 raw_text = "Me:" + raw_text
-                tgt = len(raw_text.split(" "))
+                tgt = len(raw_text.split())
                 if tgt > 300:
                     if debug == True:
                         print("Reducing memory of chat.")
                     raw_text = raw_text.split('You:', 1)[-1]
                     raw_text = "You:" + raw_text
-                    tgt = len(raw_text.split(" "))
+                    tgt = len(raw_text.split())
             if debug == True:
                 print("FINAL MEMORY REDUCTION:")
                 print(raw_text)
     if mode == False:
-        cat = len(penguin.split(" "))
+        cat = len(penguin.split())
         length = cat
         if length > 300:
             update.message.reply_text('Input text is too long.')
             return
         if new != True:
             cache = penguin
-            cachel = cat
         if new == True and cache:
             penguin = cache
-            length = cachel
+            length = len(penguin.split())
             cat = length
             if debug == True:
                 print("Cache is...")

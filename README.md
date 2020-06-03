@@ -51,7 +51,7 @@ retry - Retry the current computation.
 ```
 Here's a sample in learning chatbot mode with the latest gpt-2 database and top_p set to 0.83:
 
-0.7 has interesting "thoughtful" results. I switch between these two in dev testing.
+0.7 has interesting "thoughtful" results. I switch between these two in dev testing. I am unsure how accurate the grammarly scores are.
 
 ```
 Me: Hello! How are you today? Are you feeling alright? I hope you are doing well and not getting into any trouble. 

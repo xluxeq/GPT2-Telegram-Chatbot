@@ -51,8 +51,7 @@ retry - Retry the current computation.
 ```
 Here's a sample in learning chatbot mode with the latest gpt-2 database and top_p set to 0.83:
 
-I set the top_p to 0.7 since to limit grammatical errors on output but this sounds more robot-like.
-
+0.7 has interesting "think" - like results.
 
 ```
 Me: Hello! How are you today? Are you feeling alright? I hope you are doing well and not getting into any trouble. 

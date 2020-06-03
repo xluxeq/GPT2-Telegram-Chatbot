@@ -18,7 +18,7 @@ timstart = 1500
 top = 0.65
 # Temperature (refer to gpt-2 documentation)
 temp = 1
-# Multuplier/Divider for top_p/length calc. Decreasing decreases top_p multiplier.
+# top_p multiplier - add to top_p per word
 mx = 0.005
 # Enable top_p instead of using 0 top_k
 top_p_enable = True

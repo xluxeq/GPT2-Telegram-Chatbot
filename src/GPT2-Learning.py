@@ -15,7 +15,7 @@ debug = True
 # Session timeout
 timstart = 1500
 # Model logic (trained to usually) 0.7-0.83 work well.
-top = 0.7
+top = 0.83
 # Temperature (refer to gpt-2 documentation)
 temp = 1
 # Multuplier/Divider for top_p/length calc. Decreasing decreases top_p multiplier.

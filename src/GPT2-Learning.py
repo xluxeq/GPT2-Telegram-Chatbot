@@ -378,6 +378,8 @@ def interact_model(bot, update, top_p, temperature, mult, new):
             length = cat
             if cat < 20:
                 length = 20
+            if cat > 20:
+                length = 20
             if cat > 30:
                length =  40
             if cat > 50:
@@ -392,10 +394,12 @@ def interact_model(bot, update, top_p, temperature, mult, new):
             length = cat
             if cat < 20:
                 length = 20
+            if cat > 20:
+                length = 20
             if cat > 30:
                length =  40
             if cat > 50:
-                length = 60               
+                length = 60
             cache = raw_text
         tgt = len(raw_text.split())
         if tgt > 300:

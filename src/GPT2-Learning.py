@@ -15,11 +15,11 @@ debug = True
 # Session timeout
 timstart = 1500
 # Model thinking per word 0.66 or 0.77 work well. 
-top = 0.66
+top = 0.65
 # Temperature (refer to gpt-2 documentation)
 temp = 1
 # Multuplier/Divider for top_p/length calc. Decreasing decreases top_p multiplier.
-mx = 1
+mx = 0.005
 # Enable top_p instead of using 0 top_k
 top_p_enable = True
 # This is the start of the learning context.
@@ -438,10 +438,11 @@ def interact_model(bot, update, top_p, temperature, mult, new):
     cax = float(cat)
     cay = float(mx)
     caz = float(cax * cay)
-    ta = ((1-tx)/caz)
-    top_p = ((tx) + (ta))
-    if top_p > 1:
-        top_p = 1
+    #ta = ((1-tx)/caz)
+    #top_p = ((tx) + (ta))
+    top_p = caz + tx
+    if top_p > 0.84:
+        top_p = 0.84
     if top_p < 0.005:
         top_p = 0.005
 #############################################

@@ -15,7 +15,7 @@ debug = True
 # Session timeout
 timstart = 1500
 # Model thinking per word 0.66 or 0.77 work well. 
-top = 0.65
+top = 0.66
 # Temperature (refer to gpt-2 documentation)
 temp = 1
 # top_p multiplier - add to top_p per word

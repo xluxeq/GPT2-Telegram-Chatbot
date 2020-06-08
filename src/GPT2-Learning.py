@@ -18,10 +18,14 @@ timstart = 1500
 top = 0.66
 # Temperature (refer to gpt-2 documentation)
 temp = 1
-# top_p multiplier - add to top_p per word
-mx = 0.005
-# Enable top_p instead of using 0 top_k
-top_p_enable = True
+# top_p multiplier - add to top_p per word 
+# 0.00375‬ - may be shorter
+# 0.00400
+# 0.00425
+# 0.00450
+# 0.00475
+# 0.00500 - may be longer
+mx = 0.00375
 # This is the start of the learning context.
 learning = ""
 
@@ -371,7 +375,7 @@ def interact_model(bot, update, top_p, temperature, mult, new):
             update.message.reply_text('Input text is too long.')
             return
         if new == True and cache:
-            m = re.search('.* Me: ', cache)
+            m = re.search('.* You: ', cache)
             raw_text = m.group(0)
             cac = len(raw_text.split())
             cat = cac - 2   
@@ -388,8 +392,8 @@ def interact_model(bot, update, top_p, temperature, mult, new):
                 print("Cache is...")
                 print(raw_text)
         if new != True:
-            wolf = 'You: ' + penguin
-            initial = wolf + ' Me: '
+            wolf = 'Me: ' + penguin
+            initial = wolf + ' You: '
             raw_text = learning + initial
             length = cat
             if cat < 20:
@@ -459,141 +463,72 @@ def interact_model(bot, update, top_p, temperature, mult, new):
         length = hparams.n_ctx // 2
     elif length > hparams.n_ctx:
         raise ValueError("Can't get samples longer than window size: %s" % hparams.n_ctx)
-
-    if top_p_enable == True:
-        with tf.Session(graph=tf.Graph()) as sess:
-            context = tf.placeholder(tf.int32, [batch_size, None])
-            np.random.seed(seed)
-            tf.set_random_seed(seed)
-            output = sample.sample_sequence(
-                hparams=hparams, length=length,
-                context=context,
-                batch_size=batch_size,
-                temperature=temperature, top_k=top_k, top_p=top_p
-            )
-            saver = tf.train.Saver()
-            ckpt = tf.train.latest_checkpoint(os.path.join(models_dir, model_name))
-            saver.restore(sess, ckpt)
-            context_tokens = enc.encode(raw_text)
-            generated = 0
-            for _ in range(nsamples // batch_size):
-                out = sess.run(output, feed_dict={
-                    context: [context_tokens for _ in range(batch_size)]
-                })[:, len(context_tokens):]
-                for i in range(batch_size):
-                    generated += 1
-                    text = enc.decode(out[i])
-                    if debug == True:
-                        print("==========")
-                        print("Before splitlines: " + text)
-                        print("==========")
-                    if mode == True:
-                        pika = text.splitlines()[0]
-                    else:
-                        pika = text
-                    stripes = pika.encode(encoding=sys.stdout.encoding,errors='ignore')
-                    tigger = stripes.decode("utf-8")
-                    mew = str(tigger)
-                    # disable any regex on finishsentence mode.
-                    if mode == True:
-                        meow = regex(mew)
-                    else:
-                        meow = mew
-                    if learn == True:
-                        learning = raw_text + meow + " "
-                    update.message.reply_text(meow)
-                    if debug == True:
-                        print("==========")
-                        mod = str(mode)
-                        print("Mode: " + mod)
-                        lear = str(learn)
-                        print("Learn: " + lear)
-                        lent = str(length)
-                        print("Length: " + lent)
-                        print("==========")
-                        ball = str(pika)
-                        print("Before regex: " + ball)
-                        print("==========")
-                        print("Output: " + meow)
-                        print("==========")
-                        print("Raw_text or Original: " + raw_text)
-                        print("==========")
-                        print("Learning text or Next: " + learning)
-                        print("==========")
-                        tps = str(top_p)
-                        print("top_p out: " + tps)
-                        print("==========")
-                        tpa = str(tx)
-                        print("top_p in: " + tpa)
-                        print("==========")
-        sess.close()
-    if top_p_enable == False:
-        with tf.Session(graph=tf.Graph()) as sess:
-            context = tf.placeholder(tf.int32, [batch_size, None])
-            np.random.seed(seed)
-            tf.set_random_seed(seed)
-            output = sample.sample_sequence(
-                hparams=hparams, length=length,
-                context=context,
-                batch_size=batch_size,
-                temperature=temperature, top_k=top_k
-            )
-            saver = tf.train.Saver()
-            ckpt = tf.train.latest_checkpoint(os.path.join(models_dir, model_name))
-            saver.restore(sess, ckpt)
-            context_tokens = enc.encode(raw_text)
-            generated = 0
-            for _ in range(nsamples // batch_size):
-                out = sess.run(output, feed_dict={
-                    context: [context_tokens for _ in range(batch_size)]
-                })[:, len(context_tokens):]
-                for i in range(batch_size):
-                    generated += 1
-                    text = enc.decode(out[i])
-                    if debug == True:
-                        print("==========")
-                        print("Before splitlines: " + text)
-                        print("==========")
-                    if mode == True:
-                        pika = text.splitlines()[0]
-                    else:
-                        pika = text
-                    stripes = pika.encode(encoding=sys.stdout.encoding,errors='ignore')
-                    tigger = stripes.decode("utf-8")
-                    mew = str(tigger)
-                    # disable any regex on finishsentence mode.
-                    if mode == True:
-                        meow = regex(mew)
-                    else:
-                        meow = mew
-                    if learn == True:
-                        learning = raw_text + meow + " "
-                    update.message.reply_text(meow)
-                    if debug == True:
-                        print("==========")
-                        mod = str(mode)
-                        print("Mode: " + mod)
-                        lear = str(learn)
-                        print("Learn: " + lear)
-                        lent = str(length)
-                        print("Length: " + lent)
-                        print("==========")
-                        ball = str(pika)
-                        print("Before regex: " + ball)
-                        print("==========")
-                        print("Output: " + meow)
-                        print("==========")
-                        print("Raw_text or Original: " + raw_text)
-                        print("==========")
-                        print("Learning text or Next: " + learning)
-                        print("==========")
-                        tps = str(top_p)
-                        print("top_p out: " + tps)
-                        print("==========")
-                        tpa = str(tx)
-                        print("top_p in: " + tpa)
-                        print("==========")
-        sess.close()
+    with tf.Session(graph=tf.Graph()) as sess:
+        context = tf.placeholder(tf.int32, [batch_size, None])
+        np.random.seed(seed)
+        tf.set_random_seed(seed)
+        output = sample.sample_sequence(
+            hparams=hparams, length=length,
+            context=context,
+            batch_size=batch_size,
+            temperature=temperature, top_k=top_k, top_p=top_p
+        )
+        saver = tf.train.Saver()
+        ckpt = tf.train.latest_checkpoint(os.path.join(models_dir, model_name))
+        saver.restore(sess, ckpt)
+        context_tokens = enc.encode(raw_text)
+        generated = 0
+        for _ in range(nsamples // batch_size):
+            out = sess.run(output, feed_dict={
+                context: [context_tokens for _ in range(batch_size)]
+            })[:, len(context_tokens):]
+            for i in range(batch_size):
+                generated += 1
+                text = enc.decode(out[i])
+                if debug == True:
+                    print("==========")
+                    print("Before splitlines: " + text)
+                    print("==========")
+                if mode == True:
+                    pika = text.splitlines()[0]
+                else:
+                    pika = text
+                stripes = pika.encode(encoding=sys.stdout.encoding,errors='ignore')
+                tigger = stripes.decode("utf-8")
+                mew = str(tigger)
+                # disable any regex on finishsentence mode.
+                if mode == True:
+                    meow = regex(mew)
+                else:
+                    meow = mew
+                if learn == True:
+                    learning = raw_text + meow + " "
+                update.message.reply_text(meow)
+                if debug == True:
+                    print("==========")
+                    mod = str(mode)
+                    print("Mode: " + mod)
+                    lear = str(learn)
+                    print("Learn: " + lear)
+                    lent = str(length)
+                    print("Length: " + lent)
+                    print("==========")
+                    ball = str(pika)
+                    print("Before regex: " + ball)
+                    print("==========")
+                    print("Output: " + meow)
+                    print("==========")
+                    print("Raw_text or Original: " + raw_text)
+                    print("==========")
+                    print("Learning text or Next: " + learning)
+                    print("==========")
+                    tps = str(top_p)
+                    print("top_p out: " + tps)
+                    print("==========")
+                    tpa = str(tx)
+                    print("top_p in: " + tpa)
+                    print("==========")
+    sess.close()
 
 def error(bot, update):
     """Log Errors caused by Updates."""

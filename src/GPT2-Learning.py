@@ -498,7 +498,9 @@ def interact_model(bot, update, top_p, temperature, mult, new):
                 mew = str(tigger)
                 # disable any regex on finishsentence mode.
                 if mode == True:
-                    meow = regex(mew)
+                    meo = regex(mew)
+                    meow = " ".join(re.split("[^a-zA-Z.,?!'*]*", meo))
+                    # Final regex
                 else:
                     meow = mew
                 if learn == True:

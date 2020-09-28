@@ -5,6 +5,7 @@ import fire, json, os, string, sys, threading, random, model, sample, encoder, l
 import numpy as np
 import tensorflow as tf
 import re
+import os
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -541,7 +542,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    updater = Updater("BOTKEYBOTKEYBOTKEYBOTKEYBOTKEY", use_context=False)
+    updater = Updater(os.environ['TELEGRAM_API'], use_context=False)
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
     # on different commands - answer in Telegram

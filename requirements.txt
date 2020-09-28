@@ -1,4 +1,6 @@
 tqdm
 regex
 fire
-python-telegram-bot
+python-telegram-bot==12.0.0
+requests
+tensorflow-gpu==1.15.3

@@ -7,7 +7,7 @@ Since the bot consumes so much memory, I have it programmed in a round-robin sor
 
 ### Installation/How to use:
 
-please test using the docker container, this project is dated and tensorflow 1.15 is no longer in pip
+please test using the docker containers, this project is dated and tensorflow 1.15 is no longer in pip
 
 ### For quick command reference:
 

@@ -1,0 +1,25 @@
+---
+version: '3.8'
+services:
+   
+   gpt2tg: &base
+     image: lucmichalski/gtp2tg:gpu-latest
+     container_name: ${NAMESPACE}-telegram
+     build:
+       context: .
+       dockerfile: Dockerfile.gpu
+     volumes:
+     - model-data:/opt/service/models
+
+   download:
+     <<: *base
+     command: ["python3", "download_model.py", "${MODEL}"]
+
+   telegram:
+     <<: *base
+     environment:
+     - TELEGRAM_API=${TELEGRAM_API}
+     command: ["python3", "src/GPT2-Learning.py"]
+
+volumes:
+  model-data:

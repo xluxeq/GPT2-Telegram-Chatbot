@@ -7,33 +7,7 @@ Since the bot consumes so much memory, I have it programmed in a round-robin sor
 
 ### Installation/How to use:
 
-1. Install python3 and python3-pip from apt or python3 website.
-
-2. Install tensorflow or tensorflow-gpu using pip.
-
-```python3 -m pip install tensorflow```
-
-or
-
-```python3 -m pip install tensorflow-gpu```
-
-Tip: I doubt a regular user would have a GPU that could fit the most recent database into memory. I don't use GPU computing personally. The bot requires a good chunk of memory for CPU processing. (I use 16 GB, it often takes 14G of free memory loaded.) 
-
-...
-
-3. Install requirements.txt
-
-```python3 -m pip install -r requirements.txt```
-
-4. Download model.
-
-```python3 download_model.py 1558M```
-
-5. Input your telegram botfather bot key in place of ```BOTKEYBOTKEYBOTKEYBOTKEYBOTKEY``` in the src/GPT2-Learning.py file near the bottom. You can get this on Telegram from the @botfather account. 
-
-6. Run: 
-
-```./start```
+please test using the docker container, this project is dated and tensorflow 1.15 is no longer in pip
 
 ### For quick command reference:
 

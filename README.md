@@ -9,7 +9,7 @@ Since the bot consumes so much memory, I have it programmed in a round-robin sor
 
 Brief install instructions:
 
-Install python3.6:
+Install python3.6 (I think 3.7 might work as well, but not 3.8):
 
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa

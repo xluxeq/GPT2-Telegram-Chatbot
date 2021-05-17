@@ -17,16 +17,21 @@ sudo apt-get update
 sudo apt-get install python3.6
 ```
 
-Install pip on python 3.6
+Install pip on python 3.6:
 
 ```
 wget https://bootstrap.pypa.io/get-pip.py
 python3.6 get-pip.py
 ```
 
-Install requirements after cloning repository:
+Install requirements inside of bot folder after cloning repository:
 ```
 python3.6 -m pip install -r requirements.txt
+```
+
+Download the model:
+```
+python3.6 download_model.py 1558M
 ```
 
 Set your telegram bot API key environment variable:
@@ -34,7 +39,7 @@ Set your telegram bot API key environment variable:
 export TELEGRAM_API=1659787133:AAExLqqKbvRSeH9nQD8v6fPk_klzrOP7mtw
 ```
 
-Run the bot
+Run the bot:
 ```
 ./start
 ```

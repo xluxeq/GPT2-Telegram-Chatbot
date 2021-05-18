@@ -30,7 +30,7 @@ python3.6 -m pip install -r requirements.txt
 ```
 
 Note: You realistically need 16GB of ram or a 8GB video card. Otherwise you will wait forever.
-You can use GPU functions with atleast a 8GB video card that supports cuda tooklit 10.0. This install also works on windows with python 3.7 and nvidia, you must run command prompt
+You can use GPU functions with atleast a 8GB video card that supports cuda tooklit 10.0 and cudnn for cuda tkt 10. This install also works on windows with python 3.7 and nvidia, you must run command prompt
 as admin running python 3.7
 
 Download the model:

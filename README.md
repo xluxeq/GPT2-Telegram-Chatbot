@@ -9,15 +9,15 @@ Since the bot consumes so much memory, I have it programmed in a round-robin sor
 
 Brief install instructions:
 
-Install python3.6 (I think 3.7 might work as well, but not 3.8):
+Install python3.7 (I think 3.6 might work as well, but not 3.8):
 
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
-sudo apt-get install python3.6
+sudo apt-get install python3.7
 ```
 
-Install pip on python 3.6:
+Install pip on python 3.7:
 
 ```
 wget https://bootstrap.pypa.io/get-pip.py
@@ -28,6 +28,10 @@ Install requirements inside of bot folder after cloning repository:
 ```
 python3.6 -m pip install -r requirements.txt
 ```
+
+Note: You realistically need 16GB of ram or a 8GB video card. Otherwise you will wait forever.
+You can use GPU functions with atleast a 8GB video card that supports cuda tooklit 10.0. This install also works on windows with python 3.7 and nvidia, you must run command prompt
+as admin running python 3.7
 
 Download the model:
 ```

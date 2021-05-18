@@ -7,7 +7,7 @@ Since the bot consumes so much memory, I have it programmed in a round-robin sor
 
 ### Installation/How to use:
 
-Brief install instructions:
+Brief install instructions on Ubuntu 20/WSL.
 
 Install python3.7 (I think 3.6 might work as well, but not 3.8):
 

@@ -128,5 +128,3 @@ Tip:
 ***Inspired by the book When HARLIE Was One by David Gerrold***
 
 ***Inspired by ELIZA***
-
-[![HitCount](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot.svg)](http://hits.dwyl.io/TwistedIO/GPT2-Telegram-Chatbot)

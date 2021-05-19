@@ -52,13 +52,15 @@ Run the bot:
 
 If using python3 command:
 ```
-./start
+./start.sh
 ```
 
 If using python3.7 command:
 ```
 python3.7 src/GPT2-Learning.py
 ```
+
+You can edit start.sh to match your python command as you wish.
 
 ### For quick command reference:
 

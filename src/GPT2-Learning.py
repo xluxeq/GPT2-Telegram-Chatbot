@@ -500,7 +500,7 @@ def interact_model(bot, update, top_p, temperature, mult, new):
                 # disable any regex on finishsentence mode.
                 if mode == True:
                     meo = regex(mew)
-                    meow = " ".join(re.split("[^a-zA-Z.,?!'*]*", meo))
+                    meow = " ".join(re.split("[^a-zA-Z.,?!'*]+", meo))
                     # Final regex
                 else:
                     meow = mew

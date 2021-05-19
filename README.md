@@ -38,9 +38,9 @@ Download the model:
 python3.6 download_model.py 1558M
 ```
 
-Set your telegram bot API key environment variable:
+Set your telegram bot API key in src/GPT2-Learning.py
 ```
-export TELEGRAM_API=1659787133:AAExLqqKbvRSeH9nQD8v6fPk_klzrOP7mtw
+Replace "BOTKEY" with telegram bot token i.e. "1827396499:AAHifc06oS31oQ9L3TuCiZxD9EIfKPi0oWQ"
 ```
 
 Run the bot:

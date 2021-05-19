@@ -9,6 +9,8 @@ Since the bot consumes so much memory, I have it programmed in a round-robin sor
 
 Brief install instructions on Ubuntu 20/WSL.
 
+I highly reccomend looking at the jupyter notebook/ipynb on google collab instead.
+
 Install python3.7 (I think 3.6 might work as well, but not 3.8):
 
 ```
@@ -21,12 +23,12 @@ Install pip on python 3.7:
 
 ```
 wget https://bootstrap.pypa.io/get-pip.py
-python3.6 get-pip.py
+python3.7 get-pip.py
 ```
 
 Install requirements inside of bot folder after cloning repository:
 ```
-python3.6 -m pip install -r requirements.txt
+python3.7 -m pip install -r requirements.txt
 ```
 
 Note: You realistically need 16GB of ram or a 8GB video card. Otherwise you will wait forever.
@@ -35,7 +37,7 @@ as admin running python 3.7
 
 Download the model:
 ```
-python3.6 download_model.py 1558M
+python3.7 download_model.py 1558M
 ```
 
 Set your telegram bot API key in src/GPT2-Learning.py
@@ -44,8 +46,15 @@ Replace "BOTKEY" with telegram bot token i.e. "1827396499:AAHifc06oS31oQ9L3TuCiZ
 ```
 
 Run the bot:
+
+If using python3 command:
 ```
 ./start
+```
+
+If using python3.7 command:
+```
+python3.7 src/GPT2-Learning.py
 ```
 
 ### For quick command reference:

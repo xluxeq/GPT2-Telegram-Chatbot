@@ -31,8 +31,8 @@ mx = 0.00375
 learning = ""
 
 # End settings
-mode = False
-learn = False
+mode = True
+learn = True
 user = ""
 cache = ""
 running = False

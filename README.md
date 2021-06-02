@@ -4,10 +4,6 @@ A GPT-2 Telegram chatbot that's been relatively tuned for chatting. Feel free to
 
 Since the bot consumes so much memory, I have it programmed in a round-robin sort of mode. Each input will reset a timer on your account ID, once the timer runs down the bot is free for other users to use. You will be notified when the timer runs down, and other users can see how much time is left and if the bot is in use.
 
-#### Bug note:
-
-On the jupyter notebook/google collab, it adds a space between each character and I need to fix it at some point, I just don't know when.
-
 ### Installation/How to use:
 
 Brief install instructions on Ubuntu 20/WSL.
@@ -35,8 +31,7 @@ python3.7 -m pip install -r requirements.txt
 ```
 
 Note: You realistically need 16GB of ram or a 8GB video card. Otherwise you will wait forever.
-You can use GPU functions with atleast a 8GB video card that supports cuda tooklit 10.0 and cudnn for cuda toolkit 10. This install also works on windows with python 3.7 and nvidia, you must run command prompt
-as admin running python 3.7 on windows.
+You can use GPU functions with atleast a 8GB video card that supports cuda tooklit 10.0 and cudnn for cuda toolkit 10. This install also works on windows with python 3.7 and nvidia, you must run command prompt as admin running python 3.7 on windows.
 
 Download the model:
 ```

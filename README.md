@@ -123,8 +123,3 @@ Tip:
 0.77 top_p can sound emotional, confused and copycat-ish.
 
 0.66 top_p can sound thought-out and literal but can have ascii and cut-off errors.
-
-
-***Inspired by the book When HARLIE Was One by David Gerrold***
-
-***Inspired by ELIZA***
